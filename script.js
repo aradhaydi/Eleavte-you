@@ -1,7 +1,42 @@
 
 // Wait for DOM content to load
 document.addEventListener('DOMContentLoaded', function() {
-  // Mobile Menu Toggle
+  // Add floating elements to enhance visual appeal
+  const hero = document.querySelector('.hero');
+  if (hero) {
+    for (let i = 0; i < 5; i++) {
+      const floatingElement = document.createElement('div');
+      floatingElement.classList.add('floating-element');
+      floatingElement.style.left = `${Math.random() * 100}%`;
+      floatingElement.style.top = `${Math.random() * 100}%`;
+      floatingElement.style.animationDelay = `${Math.random() * 5}s`;
+      floatingElement.style.width = `${30 + Math.random() * 60}px`;
+      floatingElement.style.height = floatingElement.style.width;
+      floatingElement.style.opacity = `${0.1 + Math.random() * 0.2}`;
+      floatingElement.style.background = 'white';
+      floatingElement.style.borderRadius = '50%';
+      floatingElement.style.position = 'absolute';
+      floatingElement.style.animation = 'float 6s ease-in-out infinite';
+      floatingElement.style.animationDelay = `${Math.random() * 5}s`;
+      floatingElement.style.zIndex = '0';
+      floatingElement.style.pointerEvents = 'none';
+      hero.appendChild(floatingElement);
+    }
+  }
+  
+  // Add logo animation
+  const logo = document.querySelector('.logo h1');
+  if (logo) {
+    logo.addEventListener('mouseover', function() {
+      this.style.letterSpacing = '2px';
+    });
+    
+    logo.addEventListener('mouseout', function() {
+      this.style.letterSpacing = '0';
+    });
+  }
+  
+  // Mobile Menu Toggle with enhanced animation
   const menuToggle = document.querySelector('.menu-toggle');
   const menu = document.querySelector('.menu');
   
@@ -12,9 +47,11 @@ document.addEventListener('DOMContentLoaded', function() {
       if (icon.classList.contains('fa-bars')) {
         icon.classList.remove('fa-bars');
         icon.classList.add('fa-times');
+        icon.style.transform = 'rotate(90deg)';
       } else {
         icon.classList.remove('fa-times');
         icon.classList.add('fa-bars');
+        icon.style.transform = 'rotate(0deg)';
       }
     });
   }

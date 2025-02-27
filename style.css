@@ -4,6 +4,8 @@
   --primary-color: #6c63ff;
   --secondary-color: #4a44b9;
   --accent-color: #ff6584;
+  --gradient-start: #6c63ff;
+  --gradient-end: #7e76ff;
   --text-color: #2d3748;
   --text-color-light: #4a5568;
   --light-color: #f8f9fa;
@@ -14,6 +16,62 @@
   --border-radius: 8px;
   --box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --transition: all 0.3s ease;
+  --floating-animation-duration: 6s;
+}
+
+/* Floating Background Animation */
+@keyframes float {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(5px, 10px);
+  }
+  50% {
+    transform: translate(10px, 5px);
+  }
+  75% {
+    transform: translate(5px, -5px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes logoSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 * {
@@ -26,6 +84,21 @@ html {
   height: 100%;
   width: 100%;
   scroll-behavior: smooth;
+}
+
+body {
+  animation: pageTransition 0.8s ease forwards;
+}
+
+@keyframes pageTransition {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 body {
@@ -163,9 +236,15 @@ header {
   left: 0;
   width: 100%;
   z-index: 1000;
-  background-color: white;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
   padding: 1rem 0;
+  transition: all 0.4s ease;
+}
+
+header:hover {
+  background-color: rgba(255, 255, 255, 1);
 }
 
 header .container {
@@ -174,9 +253,53 @@ header .container {
   align-items: center;
 }
 
+.logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.logo::before {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: 50%;
+  left: -15px;
+  opacity: 0.7;
+  animation: logoSpin 10s linear infinite, pulse 3s ease-in-out infinite;
+  z-index: -1;
+}
+
 .logo h1 {
   font-size: 1.8rem;
-  color: var(--primary-color);
+  color: transparent;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  transition: all 0.3s ease;
+  animation: gradient 8s ease infinite;
+  position: relative;
+}
+
+.logo h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-color), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover h1::after {
+  transform: scaleX(1);
 }
 
 nav {
@@ -230,6 +353,21 @@ nav {
   align-items: center;
   color: white;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 50%, rgba(108, 99, 255, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(255, 101, 132, 0.1) 0%, transparent 50%);
+  animation: float var(--floating-animation-duration) ease-in-out infinite;
+  pointer-events: none;
 }
 
 .hero-content h1 {
@@ -278,17 +416,41 @@ nav {
   transform: translateY(-10px);
   text-decoration: none;
   color: var(--text-color);
+  box-shadow: 0 15px 30px rgba(108, 99, 255, 0.15);
 }
 
 .card-image {
   height: 200px;
   position: relative;
+  overflow: hidden;
+}
+
+.card-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.featured-card:hover .card-image::before {
+  opacity: 1;
 }
 
 .card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.featured-card:hover .card-image img {
+  transform: scale(1.05);
 }
 
 .card-content {
@@ -536,9 +698,37 @@ nav {
 
 /* Newsletter Section */
 .newsletter {
-  background-color: var(--primary-color);
+  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+  background-size: 200% 200%;
+  animation: gradient 15s ease infinite;
   color: white;
   padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.newsletter::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  animation: float 8s ease-in-out infinite;
+}
+
+.newsletter::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  animation: float 10s ease-in-out infinite reverse;
 }
 
 .newsletter-content {
