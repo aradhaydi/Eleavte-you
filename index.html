@@ -1,16 +1,361 @@
-<!DOCTYPE html>
-<html>
 
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>replit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elevate - Self Development Blog</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  Hello world
+  <header>
+    <div class="container">
+      <div class="logo">
+        <h1>Elevate</h1>
+      </div>
+      <nav>
+        <ul class="menu">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#articles">Articles</a></li>
+          <li><a href="#courses">Courses</a></li>
+          <li><a href="#exercises">Exercises</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+        <div class="menu-toggle">
+          <i class="fas fa-bars"></i>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Transform Your Life Through Self Development</h1>
+        <p>Discover powerful tools, insights, and practices to elevate your mind, body, and spirit.</p>
+        <div class="cta-buttons">
+          <a href="#courses" class="btn primary-btn">Explore Courses</a>
+          <a href="#articles" class="btn secondary-btn">Read Articles</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="featured" class="featured">
+    <div class="container">
+      <h2 class="section-title">Featured Content</h2>
+      <div class="featured-grid">
+        <div class="featured-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Mindfulness Practice">
+          </div>
+          <div class="card-content">
+            <span class="tag">Mindfulness</span>
+            <h3>The Power of Daily Meditation</h3>
+            <p>Discover how just 10 minutes a day can transform your mental clarity and emotional balance.</p>
+            <a href="#" class="read-more">Read More</a>
+          </div>
+        </div>
+        <div class="featured-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Productivity Methods">
+          </div>
+          <div class="card-content">
+            <span class="tag">Productivity</span>
+            <h3>Deep Work: Achieving Flow State</h3>
+            <p>Learn techniques to eliminate distractions and maximize your productive potential.</p>
+            <a href="#" class="read-more">Read More</a>
+          </div>
+        </div>
+        <div class="featured-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Healthy Habits">
+          </div>
+          <div class="card-content">
+            <span class="tag">Health</span>
+            <h3>Building Sustainable Healthy Habits</h3>
+            <p>A practical guide to creating and maintaining habits that stick for the long term.</p>
+            <a href="#" class="read-more">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="articles" class="articles">
+    <div class="container">
+      <h2 class="section-title">Latest Articles</h2>
+      <div class="articles-grid">
+        <div class="article-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Morning Routine">
+          </div>
+          <div class="card-content">
+            <span class="tag">Lifestyle</span>
+            <h3>The 5 AM Miracle: Engineering Your Morning Routine</h3>
+            <p>How the first hour of your day determines your success. Learn practical tips for creating a morning routine that energizes and inspires.</p>
+            <a href="#" class="read-more">Read More</a>
+          </div>
+        </div>
+        <div class="article-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1516383740770-fbcc5ccbece0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Emotional Intelligence">
+          </div>
+          <div class="card-content">
+            <span class="tag">Psychology</span>
+            <h3>Mastering Emotional Intelligence in Relationships</h3>
+            <p>Understanding and managing your emotions is key to healthy relationships. Explore practical EQ exercises you can start today.</p>
+            <a href="#" class="read-more">Read More</a>
+          </div>
+        </div>
+        <div class="article-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1513128034602-7814ccaddd4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Goal Setting">
+          </div>
+          <div class="card-content">
+            <span class="tag">Motivation</span>
+            <h3>The Science of Goal Setting: Why Most People Fail</h3>
+            <p>Learn the psychological principles behind effective goal setting and how to apply them to achieve what matters most to you.</p>
+            <a href="#" class="read-more">Read More</a>
+          </div>
+        </div>
+        <div class="article-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1515603403036-6d690466e4a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Financial Mindset">
+          </div>
+          <div class="card-content">
+            <span class="tag">Finance</span>
+            <h3>Abundance Mindset: Rewriting Your Money Story</h3>
+            <p>Identify and transform limiting beliefs about money. Develop an abundance mindset that attracts wealth and opportunity.</p>
+            <a href="#" class="read-more">Read More</a>
+          </div>
+        </div>
+      </div>
+      <div class="see-all-container">
+        <a href="#" class="btn see-all-btn">See All Articles</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="courses" class="courses">
+    <div class="container">
+      <h2 class="section-title">Premium Courses</h2>
+      <div class="courses-grid">
+        <div class="course-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Productivity Masterclass">
+            <span class="price">$149</span>
+          </div>
+          <div class="card-content">
+            <h3>Productivity Masterclass: Zero to Hero</h3>
+            <div class="course-info">
+              <span><i class="fas fa-clock"></i> 6 Weeks</span>
+              <span><i class="fas fa-user-graduate"></i> 4,728 Students</span>
+            </div>
+            <p>Master proven productivity systems to reclaim your time, energy and focus. Includes 20+ hours of video, worksheets, and community support.</p>
+            <a href="#" class="btn course-btn">Enroll Now</a>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1545389336-cf090694435e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Mindfulness Meditation">
+            <span class="price">$99</span>
+          </div>
+          <div class="card-content">
+            <h3>Mindfulness Meditation: A 30-Day Journey</h3>
+            <div class="course-info">
+              <span><i class="fas fa-clock"></i> 4 Weeks</span>
+              <span><i class="fas fa-user-graduate"></i> 12,354 Students</span>
+            </div>
+            <p>A systematic approach to building a meditation practice that sticks. Includes guided meditations, techniques for different situations, and live Q&A sessions.</p>
+            <a href="#" class="btn course-btn">Enroll Now</a>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1589121548283-b4ab4a954a29?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Effective Communication">
+            <span class="price">$199</span>
+          </div>
+          <div class="card-content">
+            <h3>The Art of Effective Communication</h3>
+            <div class="course-info">
+              <span><i class="fas fa-clock"></i> 8 Weeks</span>
+              <span><i class="fas fa-user-graduate"></i> 3,189 Students</span>
+            </div>
+            <p>Transform your ability to connect with others through advanced communication techniques, storytelling methods, and conflict resolution strategies.</p>
+            <a href="#" class="btn course-btn">Enroll Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="exercises" class="exercises">
+    <div class="container">
+      <h2 class="section-title">Free Exercises & Tools</h2>
+      <div class="exercises-grid">
+        <div class="exercise-card">
+          <div class="exercise-icon">
+            <i class="fas fa-brain"></i>
+          </div>
+          <h3>Values Discovery Worksheet</h3>
+          <p>Identify your core values and learn how to align your decisions and goals with what matters most to you.</p>
+          <a href="#" class="btn download-btn">Download PDF</a>
+        </div>
+        <div class="exercise-card">
+          <div class="exercise-icon">
+            <i class="fas fa-tasks"></i>
+          </div>
+          <h3>Weekly Planning Template</h3>
+          <p>A step-by-step template for planning your week to maximize productivity while maintaining work-life balance.</p>
+          <a href="#" class="btn download-btn">Download PDF</a>
+        </div>
+        <div class="exercise-card">
+          <div class="exercise-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h3>Gratitude Journal Prompts</h3>
+          <p>30 thought-provoking prompts to deepen your gratitude practice and boost your happiness levels.</p>
+          <a href="#" class="btn download-btn">Download PDF</a>
+        </div>
+        <div class="exercise-card">
+          <div class="exercise-icon">
+            <i class="fas fa-comment"></i>
+          </div>
+          <h3>Difficult Conversations Script</h3>
+          <p>A framework for navigating challenging conversations with empathy, clarity, and confidence.</p>
+          <a href="#" class="btn download-btn">Download PDF</a>
+        </div>
+        <div class="exercise-card">
+          <div class="exercise-icon">
+            <i class="fas fa-bed"></i>
+          </div>
+          <h3>Sleep Optimization Checklist</h3>
+          <p>Evidence-based strategies to improve your sleep quality and wake up feeling refreshed and energized.</p>
+          <a href="#" class="btn download-btn">Download PDF</a>
+        </div>
+        <div class="exercise-card">
+          <div class="exercise-icon">
+            <i class="fas fa-coins"></i>
+          </div>
+          <h3>Personal Budget Calculator</h3>
+          <p>A simple but powerful tool to track your expenses, save more, and achieve your financial goals.</p>
+          <a href="#" class="btn download-btn">Download PDF</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials" class="testimonials">
+    <div class="container">
+      <h2 class="section-title">Success Stories</h2>
+      <div class="testimonials-slider">
+        <div class="testimonial">
+          <div class="testimonial-content">
+            <p>"The productivity course completely changed how I approach my work and personal projects. I've accomplished more in the last 3 months than in the entire previous year."</p>
+          </div>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Sarah J.">
+            <div>
+              <h4>Sarah J.</h4>
+              <p>Marketing Director</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-content">
+            <p>"I was skeptical about meditation until I tried the 30-day journey. Now I can't imagine starting my day without it. My anxiety levels have decreased dramatically."</p>
+          </div>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="David M.">
+            <div>
+              <h4>David M.</h4>
+              <p>Software Engineer</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-content">
+            <p>"The communication course helped me repair my relationship with my daughter. We now have tools to express ourselves without the conversation spiraling into conflict."</p>
+          </div>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1579463148228-138296ac3b98?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Linda K.">
+            <div>
+              <h4>Linda K.</h4>
+              <p>School Teacher</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="newsletter" class="newsletter">
+    <div class="container">
+      <div class="newsletter-content">
+        <h2>Join Our Community</h2>
+        <p>Get weekly insights, exclusive content, and early access to new courses.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email address" required>
+          <button type="submit" class="btn primary-btn">Subscribe</button>
+        </form>
+        <p class="small">We respect your privacy. Unsubscribe at any time.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h2>Elevate</h2>
+          <p>Empowering personal growth through evidence-based content and community support.</p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="links-column">
+            <h3>Content</h3>
+            <ul>
+              <li><a href="#">Articles</a></li>
+              <li><a href="#">Courses</a></li>
+              <li><a href="#">Free Resources</a></li>
+              <li><a href="#">Podcast</a></li>
+            </ul>
+          </div>
+          <div class="links-column">
+            <h3>Company</h3>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Team</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="links-column">
+            <h3>Legal</h3>
+            <ul>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Cookie Policy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2023 Elevate Self Development. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
   <script src="script.js"></script>
 </body>
-
 </html>
