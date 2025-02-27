@@ -7,22 +7,44 @@ document.addEventListener('DOMContentLoaded', function() {
     for (let i = 0; i < 5; i++) {
       const floatingElement = document.createElement('div');
       floatingElement.classList.add('floating-element');
-      floatingElement.style.left = `${Math.random() * 100}%`;
-      floatingElement.style.top = `${Math.random() * 100}%`;
+      floatingElement.style.left = `${Math.random() * 90}%`;
+      floatingElement.style.top = `${Math.random() * 90}%`;
       floatingElement.style.animationDelay = `${Math.random() * 5}s`;
       floatingElement.style.width = `${30 + Math.random() * 60}px`;
       floatingElement.style.height = floatingElement.style.width;
       floatingElement.style.opacity = `${0.1 + Math.random() * 0.2}`;
       floatingElement.style.background = 'white';
       floatingElement.style.borderRadius = '50%';
-      floatingElement.style.position = 'absolute';
       floatingElement.style.animation = 'float 6s ease-in-out infinite';
       floatingElement.style.animationDelay = `${Math.random() * 5}s`;
-      floatingElement.style.zIndex = '0';
-      floatingElement.style.pointerEvents = 'none';
       hero.appendChild(floatingElement);
     }
   }
+  
+  // Add floating background to the entire site for enhanced visuals
+  const addFloatingBg = () => {
+    const sections = document.querySelectorAll('section:not(.hero)');
+    sections.forEach(section => {
+      // Add only 2 elements per section to avoid cluttering
+      for (let i = 0; i < 2; i++) {
+        const floatingElement = document.createElement('div');
+        floatingElement.classList.add('floating-element');
+        floatingElement.style.left = `${Math.random() * 90}%`;
+        floatingElement.style.top = `${Math.random() * 90}%`;
+        floatingElement.style.animationDelay = `${Math.random() * 5}s`;
+        floatingElement.style.width = `${40 + Math.random() * 80}px`;
+        floatingElement.style.height = floatingElement.style.width;
+        floatingElement.style.opacity = `${0.03 + Math.random() * 0.05}`;
+        floatingElement.style.background = 'linear-gradient(135deg, var(--primary-color), var(--accent-color))';
+        floatingElement.style.borderRadius = '50%';
+        floatingElement.style.filter = 'blur(20px)';
+        section.appendChild(floatingElement);
+      }
+    });
+  };
+  
+  // Execute floating background creation
+  addFloatingBg();
   
   // Add logo animation
   const logo = document.querySelector('.logo h1');
@@ -143,6 +165,27 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }, 5000);
   }
+  
+  // Fix potential layout issues on resize
+  window.addEventListener('resize', function() {
+    // Force recalculation of grid layouts
+    const grids = document.querySelectorAll('.featured-grid, .articles-grid, .courses-grid, .exercises-grid, .related-grid');
+    grids.forEach(grid => {
+      // This forces a reflow
+      grid.style.display = 'none';
+      setTimeout(() => {
+        grid.style.display = '';
+      }, 10);
+    });
+    
+    // Adjust article header height on mobile
+    const articleHeader = document.querySelector('.article-header');
+    if (articleHeader && window.innerWidth <= 768) {
+      articleHeader.style.height = 'auto';
+      articleHeader.style.minHeight = '40vh';
+      articleHeader.style.padding = '4rem 1rem 2rem';
+    }
+  });
   
   // Newsletter form submission
   const newsletterForm = document.querySelector('.newsletter-form');

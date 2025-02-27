@@ -1,4 +1,3 @@
-
 /* Base Styles and Variables */
 :root {
   --primary-color: #6c63ff;
@@ -17,6 +16,7 @@
   --box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --transition: all 0.3s ease;
   --floating-animation-duration: 6s;
+  --grid-gap: 2rem; /* Added for consistent gap */
 }
 
 /* Floating Background Animation */
@@ -864,11 +864,11 @@ footer {
   .hero-content h1 {
     font-size: 2.8rem;
   }
-  
+
   .section-title {
     font-size: 2.2rem;
   }
-  
+
   .courses-grid {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
@@ -887,46 +887,46 @@ footer {
     transition: var(--transition);
     z-index: 999;
   }
-  
+
   .menu.active {
     left: 0;
   }
-  
+
   .menu li {
     margin: 1rem 0;
   }
-  
+
   .menu-toggle {
     display: block;
   }
-  
+
   .hero-content h1 {
     font-size: 2.3rem;
   }
-  
+
   .hero-content p {
     font-size: 1rem;
   }
-  
+
   .cta-buttons {
     flex-direction: column;
     gap: 1rem;
   }
-  
+
   .footer-content {
     flex-direction: column;
     gap: 2rem;
   }
-  
+
   .newsletter-form {
     flex-direction: column;
     gap: 1rem;
   }
-  
+
   .newsletter-form input {
     border-radius: var(--border-radius);
   }
-  
+
   .newsletter-form button {
     border-radius: var(--border-radius);
   }
@@ -939,16 +939,34 @@ footer {
   .exercises-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .hero-content h1 {
     font-size: 2rem;
   }
-  
+
   section {
     padding: 3rem 0;
   }
-  
+
   .testimonial {
     padding: 1.5rem;
   }
+}
+
+/* Added styles based on changes */
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--grid-gap);
+  width: 100%;
+  overflow: visible;
+}
+
+.article-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  line-height: 1.8;
+  overflow: visible;
+  position: relative;
 }
