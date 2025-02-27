@@ -1,0 +1,543 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building Sustainable Healthy Habits | Elevate</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Article-specific styles */
+    .article-header {
+      height: 60vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+      url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      margin-top: 80px;
+      padding: 0 2rem;
+    }
+
+    .article-header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .article-meta {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .article-meta span {
+      display: flex;
+      align-items: center;
+    }
+
+    .article-meta i {
+      margin-right: 0.5rem;
+      color: var(--primary-color);
+    }
+
+    .article-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      line-height: 1.8;
+    }
+
+    .article-content h2 {
+      font-size: 2rem;
+      margin: 2rem 0 1rem;
+      color: var(--dark-color);
+    }
+
+    .article-content h3 {
+      font-size: 1.5rem;
+      margin: 1.5rem 0 1rem;
+      color: var(--dark-color);
+    }
+
+    .article-content p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .article-content ul, .article-content ol {
+      margin-bottom: 1.5rem;
+      padding-left: 2rem;
+    }
+
+    .article-content li {
+      margin-bottom: 0.5rem;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--primary-color);
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+      font-style: italic;
+      color: var(--text-color-light);
+    }
+
+    .article-content img {
+      width: 100%;
+      border-radius: var(--border-radius);
+      margin: 2rem 0;
+    }
+
+    .article-content .highlight-box {
+      background-color: rgba(108, 99, 255, 0.1);
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+
+    .author-bio {
+      display: flex;
+      align-items: center;
+      background-color: var(--light-color);
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      margin: 3rem 0;
+    }
+
+    .author-bio img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-right: 2rem;
+      object-fit: cover;
+    }
+
+    .related-articles {
+      margin-top: 4rem;
+    }
+
+    .related-articles h3 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .article-header h1 {
+        font-size: 2.2rem;
+      }
+
+      .article-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .related-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <h1>Elevate</h1>
+      </div>
+      <nav>
+        <ul class="menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#articles" class="active">Articles</a></li>
+          <li><a href="index.html#courses">Courses</a></li>
+          <li><a href="index.html#exercises">Exercises</a></li>
+          <li><a href="index.html#about">About</a></li>
+        </ul>
+        <div class="menu-toggle">
+          <i class="fas fa-bars"></i>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="article-header">
+    <div class="header-content">
+      <span class="tag">Health</span>
+      <h1>Building Sustainable Healthy Habits</h1>
+      <div class="article-meta">
+        <span><i class="fas fa-user"></i> By Michael Chen</span>
+        <span><i class="fas fa-calendar"></i> June 12, 2023</span>
+        <span><i class="fas fa-clock"></i> 15 min read</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="article-content">
+    <p>In a world of quick fixes and 30-day challenges, the truth about lasting behavior change often gets lost. While short-term programs can jumpstart progress, research consistently shows that the key to long-term health and wellbeing lies in sustainable habits—small, consistent actions that become automatic parts of your daily life.</p>
+
+    <p>This article explores the science of habit formation and provides practical strategies to build healthy routines that last a lifetime, not just until the next trend comes along.</p>
+
+    <h2>The Neuroscience of Habit Formation</h2>
+
+    <p>To create lasting change, it helps to understand how your brain forms habits in the first place. Neuroscientists have identified a clear pattern that governs how behaviors become automatic:</p>
+
+    <div class="highlight-box">
+      <h3>The Habit Loop</h3>
+      <p>Every habit consists of three essential components:</p>
+      <ol>
+        <li><strong>Cue:</strong> The trigger that initiates the behavior (time of day, location, emotional state, other people, preceding action)</li>
+        <li><strong>Routine:</strong> The actual behavior or action you perform</li>
+        <li><strong>Reward:</strong> The benefit you gain from performing the behavior</li>
+      </ol>
+    </div>
+
+    <p>Understanding this loop gives you tremendous power. By deliberately engineering these three elements, you can create new neural pathways that make healthy behaviors increasingly automatic.</p>
+
+    <p>When a habit first forms, your brain is fully engaged in the process. But as the behavior becomes more automatic, neural activity decreases. This is why established habits require less willpower and conscious effort—they've become hardwired into your basal ganglia, the part of your brain responsible for automatic behaviors.</p>
+
+    <img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Brain neural connections">
+
+    <h2>Why Most Habit Changes Fail</h2>
+
+    <p>Before diving into strategies for success, it's worth examining why so many well-intentioned habit changes fall apart. Research points to several common pitfalls:</p>
+
+    <h3>1. Reliance on Motivation</h3>
+
+    <p>Motivation is a fluctuating resource, not a reliable foundation for lasting change. When you depend solely on feeling motivated, your habits become vulnerable to stress, fatigue, and the inevitable ebbs in enthusiasm.</p>
+
+    <h3>2. Overwhelming Ambition</h3>
+
+    <p>Starting with dramatic changes (e.g., working out for an hour daily when you've been sedentary) creates an unsustainable cycle: initial progress followed by burnout and abandonment.</p>
+
+    <h3>3. Environmental Mismatch</h3>
+
+    <p>Attempting to build habits in environments filled with obstacles or temptations sets you up for failure. Your surroundings have a profound, often unconscious influence on your behavior.</p>
+
+    <h3>4. Identity Disconnect</h3>
+
+    <p>When new habits don't align with how you see yourself, internal resistance naturally emerges. Without addressing this disconnect, long-term change becomes unlikely.</p>
+
+    <blockquote>
+      "We do not rise to the level of our goals. We fall to the level of our systems." — James Clear
+    </blockquote>
+
+    <h2>The Science-Backed Framework for Lasting Habits</h2>
+
+    <p>Drawing from behavioral psychology, neuroscience, and practical experience, here's a comprehensive framework for building habits that stick:</p>
+
+    <h3>1. Start Ridiculously Small</h3>
+
+    <p>Stanford researcher BJ Fogg emphasizes the power of "tiny habits"—behaviors so small they require minimal motivation and trigger little resistance. By starting with mini versions of your target habits, you lay neural foundations that can be built upon later.</p>
+
+    <div class="highlight-box">
+      <h4>Examples of Tiny Habits:</h4>
+      <ul>
+        <li>Instead of "exercise daily," start with "do one push-up after brushing teeth"</li>
+        <li>Instead of "meditate for 20 minutes," begin with "three mindful breaths before turning on your computer"</li>
+        <li>Instead of "completely change your diet," start with "add one vegetable to lunch"</li>
+      </ul>
+    </div>
+
+    <p>These may seem trivially small, but that's precisely the point. The goal isn't immediate results but establishing the neural pathway and psychological pattern of showing up consistently.</p>
+
+    <h3>2. Anchor to Existing Routines</h3>
+
+    <p>One of the most effective ways to establish a new habit is to connect it to an existing one. This approach, known as habit stacking, leverages behaviors already on autopilot to cue your new habits.</p>
+
+    <p>The formula is: "After [established habit], I will [new habit]."</p>
+
+    <p>Examples:</p>
+    <ul>
+      <li>"After pouring my morning coffee, I will write down three priorities for the day."</li>
+      <li>"After taking off my work shoes, I will change into workout clothes."</li>
+      <li>"After brushing my teeth at night, I will floss one tooth." (Yes, start with just one!)</li>
+    </ul>
+
+    <h3>3. Design Your Environment</h3>
+
+    <p>Humans are remarkably responsive to their surroundings. Research shows that environmental cues often trigger behaviors without conscious awareness. Use this to your advantage by deliberately structuring your environment to make good habits easier and unwanted habits more difficult.</p>
+
+    <p>Environmental design strategies:</p>
+
+    <ul>
+      <li><strong>Friction reduction</strong> – Remove steps between you and your desired habit (e.g., sleep in workout clothes if morning exercise is your goal)</li>
+      <li><strong>Friction addition</strong> – Add steps between you and unwanted habits (e.g., keep social media apps off your phone so you must use a computer)</li>
+      <li><strong>Visual cuing</strong> – Place visible reminders where they'll trigger your habit (e.g., keep a water bottle on your desk for hydration)</li>
+      <li><strong>Distraction elimination</strong> – Identify and remove environmental triggers for unwanted behaviors (e.g., keeping unhealthy snacks out of sight)</li>
+    </ul>
+
+    <img src="https://images.unsplash.com/photo-1511649475669-e288648b2339?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Organized workspace">
+
+    <h3>4. Leverage Social Dynamics</h3>
+
+    <p>The people around you profoundly influence your habits, often subconsciously. Social accountability, support, and norms can significantly increase your odds of success.</p>
+
+    <p>Effective social strategies include:</p>
+
+    <ul>
+      <li><strong>Accountability partnerships</strong> – Find someone with similar goals and check in regularly</li>
+      <li><strong>Public commitments</strong> – Share your intentions with friends, family, or social media followers</li>
+      <li><strong>Community involvement</strong> – Join groups centered around your target habit (running clubs, meditation circles, etc.)</li>
+      <li><strong>Environmental restructuring</strong> – When possible, spend time with people who already practice your desired habits</li>
+    </ul>
+
+    <h3>5. Create Immediate Rewards</h3>
+
+    <p>The human brain responds more strongly to immediate consequences than delayed ones. This presents a challenge with many healthy habits, where benefits are long-term while costs (effort, discomfort, inconvenience) are immediate.</p>
+
+    <p>To overcome this mismatch, deliberately build immediate rewards into your habit routine:</p>
+
+    <ul>
+      <li><strong>Paired reward system</strong> – Combine your habit with something immediately pleasurable (listen to favorite podcasts only during workouts)</li>
+      <li><strong>Celebration techniques</strong> – Create a brief but emotionally significant victory ritual after completing your habit</li>
+      <li><strong>Progress tracking</strong> – Use habit trackers, apps, or journals to provide the satisfaction of visual progress</li>
+      <li><strong>Mindful savoring</strong> – Take a moment to notice and appreciate positive sensations during or after your habit</li>
+    </ul>
+
+    <h3>6. Embrace Identity-Based Habits</h3>
+
+    <p>Perhaps the most powerful approach to sustainable change is shifting your focus from outcomes to identity. Rather than centering on what you want to achieve, focus on who you want to become.</p>
+
+    <p>Research shows that when behaviors become linked to your self-concept, they're far more likely to persist. This process works in both directions: your behaviors shape your identity, and your identity drives your behaviors.</p>
+
+    <blockquote>
+      "The most effective way to change your habits is to focus not on what you want to achieve, but on who you wish to become." — James Clear
+    </blockquote>
+
+    <p>To leverage identity-based habits:</p>
+
+    <ul>
+      <li>Use identity statements ("I am someone who exercises consistently" rather than "I want to exercise more")</li>
+      <li>Look for evidence that supports your new identity and mentally highlight it</li>
+      <li>Connect your habits to deeper values and your ideal self-image</li>
+      <li>Practice small wins that reinforce your emerging identity</li>
+    </ul>
+
+    <h2>Habit-Specific Strategies for Common Goals</h2>
+
+    <p>Different types of habits require slightly different approaches. Here are tailored strategies for some of the most common health and wellness habits:</p>
+
+    <h3>Exercise Habits</h3>
+
+    <ul>
+      <li><strong>Emphasis on enjoyment</strong> – Find activities you genuinely like rather than what you think you "should" do</li>
+      <li><strong>Social commitment</strong> – Schedule workouts with others or join classes with financial penalties for no-shows</li>
+      <li><strong>Preparation elimination</strong> – Remove as many steps as possible between deciding to exercise and starting (pre-packed gym bag, workout clothes laid out)</li>
+      <li><strong>Minimum viable workout</strong> – Establish a very short routine you can do even on your worst days</li>
+    </ul>
+
+    <h3>Nutrition Habits</h3>
+
+    <ul>
+      <li><strong>Environment design</strong> – Restructure your kitchen and food storage to make healthy options more visible and accessible</li>
+      <li><strong>Meal prepping</strong> – Batch prepare healthy options when motivation and energy are high</li>
+      <li><strong>Implementation intentions</strong> – Create specific if-then plans for challenging situations ("If I'm offered dessert at a restaurant, I'll order tea instead")</li>
+      <li><strong>Substitution rather than elimination</strong> – Replace less healthy options with satisfying alternatives rather than focusing on restriction</li>
+    </ul>
+
+    <h3>Sleep Habits</h3>
+
+    <ul>
+      <li><strong>Consistent cues</strong> – Develop a brief but consistent bedtime ritual that signals sleep time to your brain</li>
+      <li><strong>Technology boundaries</strong> – Use automation (phone settings, outlet timers) to reduce evening screen exposure</li>
+      <li><strong>Environment optimization</strong> – Invest in making your bedroom as conducive to quality sleep as possible</li>
+      <li><strong>Daytime habit links</strong> – Connect daytime habits (caffeine cutoff, exercise timing) to your sleep goals</li>
+    </ul>
+
+    <img src="https://images.unsplash.com/photo-1493612276216-ee3925520721?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Peaceful bedroom environment">
+
+    <h3>Mindfulness and Mental Wellness Habits</h3>
+
+    <ul>
+      <li><strong>Trigger-based practice</strong> – Attach brief mindfulness moments to common triggers throughout your day</li>
+      <li><strong>Visual reminders</strong> – Place small cues in your environment to prompt mindful moments</li>
+      <li><strong>Guided technology</strong> – Use apps that provide structure and accountability for meditation and mindfulness</li>
+      <li><strong>Non-negotiable minimal practice</strong> – Establish a practice so brief (even 1 minute) that it can happen regardless of circumstances</li>
+    </ul>
+
+    <h2>Overcoming Common Obstacles</h2>
+
+    <p>Even with the best strategies, challenges will arise. Here's how to handle some of the most common obstacles to habit sustainability:</p>
+
+    <h3>The Plateau Effect</h3>
+
+    <p>After initial progress, most habits reach a plateau where visible improvements slow or stop. This is when many people abandon their efforts, mistaking a natural part of the process for failure.</p>
+
+    <p>To overcome plateaus:</p>
+
+    <ul>
+      <li>Expect them as a normal part of the journey, not a sign of failure</li>
+      <li>Focus on process goals (showing up) rather than outcome goals during these periods</li>
+      <li>Introduce small variations to your habit to reignite interest</li>
+      <li>Look for less obvious signs of progress (increased ease, less mental resistance)</li>
+    </ul>
+
+    <h3>The Breaking Chain</h3>
+
+    <p>Missing a day of your habit can lead to the "what-the-hell effect"—where one slip cascades into complete abandonment. This perfectionistic thinking undermines long-term success.</p>
+
+    <p>To handle breaks in your habit chain:</p>
+
+    <ul>
+      <li>Plan for imperfection by establishing a "minimum viable habit" for difficult days</li>
+      <li>Follow the "never miss twice" rule—one miss is an accident, two is the start of a new pattern</li>
+      <li>Create specific if-then recovery plans before breaks happen</li>
+      <li>Focus on your long-term consistency rate rather than perfect streaks</li>
+    </ul>
+
+    <h3>Motivation Fluctuations</h3>
+
+    <p>Energy, motivation, and circumstances naturally fluctuate. Building habits that can weather these changes requires adaptability.</p>
+
+    <p>Strategies for resilient habits:</p>
+
+    <ul>
+      <li>Create tiered habit plans—full, medium, and minimal versions for different energy levels</li>
+      <li>Focus on habit foundations during low periods rather than optimal performance</li>
+      <li>Use motivation cycles strategically—build systems and remove obstacles when motivation is high</li>
+      <li>Practice self-compassion rather than self-criticism when facing challenges</li>
+    </ul>
+
+    <div class="highlight-box">
+      <h3>Your 30-Day Sustainable Habit Blueprint</h3>
+      <p>Ready to put these principles into action? Here's a step-by-step plan:</p>
+      <ol>
+        <li><strong>Days 1-3:</strong> Select one small habit and identify its cue, routine, and reward components</li>
+        <li><strong>Days 4-10:</strong> Practice your minimal viable habit daily, focusing on consistency rather than performance</li>
+        <li><strong>Days 11-20:</strong> Gradually increase habit difficulty while strengthening environmental and social supports</li>
+        <li><strong>Days 21-30:</strong> Reflect on identity shifts, refine your approach, and consider how to maintain through upcoming challenges</li>
+      </ol>
+    </div>
+
+    <h2>Conclusion: Beyond the "21 Days" Myth</h2>
+
+    <p>The common belief that habits take 21 days to form oversimplifies a complex process. Research from University College London suggests that habit formation actually takes anywhere from 18 to 254 days, with an average of 66 days until automaticity is reached.</p>
+
+    <p>The timeline varies based on the habit's complexity, your individual circumstances, and the strength of your implementation strategy. What matters most isn't reaching some arbitrary day count, but building a system that supports consistent behavior until it becomes a natural part of your life.</p>
+
+    <p>By focusing on tiny actions, environmental design, immediate rewards, and identity shifts, you can create lasting changes that compound over time. Remember that the goal isn't perfection but progress—showing up consistently and returning to your habits even after inevitable disruptions.</p>
+
+    <p>What small habit will you start today?</p>
+
+    <div class="author-bio">
+      <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Michael Chen">
+      <div>
+        <h3>About the Author</h3>
+        <h4>Michael Chen</h4>
+        <p>Michael is a behavioral scientist and habit coach who specializes in helping people build sustainable health practices. With a background in psychology and ten years of coaching experience, he focuses on evidence-based approaches to lasting behavior change.</p>
+      </div>
+    </div>
+
+    <div class="related-articles">
+      <h3>You May Also Enjoy</h3>
+      <div class="related-grid">
+        <a href="article1.html" class="article-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Morning Routine">
+          </div>
+          <div class="card-content">
+            <span class="tag">Lifestyle</span>
+            <h3>The 5 AM Miracle: Engineering Your Morning Routine</h3>
+            <p>How the first hour of your day determines your success.</p>
+          </div>
+        </a>
+        <a href="article5.html" class="article-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Mindfulness Practice">
+          </div>
+          <div class="card-content">
+            <span class="tag">Mindfulness</span>
+            <h3>The Power of Daily Meditation</h3>
+            <p>Discover how just 10 minutes a day can transform your mental clarity.</p>
+          </div>
+        </a>
+        <a href="article3.html" class="article-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1513128034602-7814ccaddd4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Goal Setting">
+          </div>
+          <div class="card-content">
+            <span class="tag">Motivation</span>
+            <h3>The Science of Goal Setting: Why Most People Fail</h3>
+            <p>Learn the psychological principles behind effective goal setting.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="newsletter" class="newsletter">
+    <div class="container">
+      <div class="newsletter-content">
+        <h2>Join Our Community</h2>
+        <p>Get weekly insights, exclusive content, and early access to new courses.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email address" required>
+          <button type="submit" class="btn primary-btn">Subscribe</button>
+        </form>
+        <p class="small">We respect your privacy. Unsubscribe at any time.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h2>Elevate</h2>
+          <p>Empowering personal growth through evidence-based content and community support.</p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="links-column">
+            <h3>Content</h3>
+            <ul>
+              <li><a href="index.html#articles">Articles</a></li>
+              <li><a href="index.html#courses">Courses</a></li>
+              <li><a href="index.html#exercises">Free Resources</a></li>
+              <li><a href="#">Podcast</a></li>
+            </ul>
+          </div>
+          <div class="links-column">
+            <h3>Company</h3>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Team</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="links-column">
+            <h3>Legal</h3>
+            <ul>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Cookie Policy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2023 Elevate Self Development. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
