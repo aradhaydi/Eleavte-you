@@ -269,10 +269,15 @@ nav {
   overflow: hidden;
   box-shadow: var(--box-shadow);
   transition: var(--transition);
+  text-decoration: none;
+  color: var(--text-color);
+  display: block;
 }
 
 .featured-card:hover {
   transform: translateY(-10px);
+  text-decoration: none;
+  color: var(--text-color);
 }
 
 .card-image {
@@ -345,10 +350,15 @@ nav {
   overflow: hidden;
   box-shadow: var(--box-shadow);
   transition: var(--transition);
+  text-decoration: none;
+  color: var(--text-color);
+  display: block;
 }
 
 .article-card:hover {
   transform: translateY(-5px);
+  text-decoration: none;
+  color: var(--text-color);
 }
 
 .see-all-container {

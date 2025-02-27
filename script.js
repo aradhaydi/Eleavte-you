@@ -176,4 +176,17 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
   }
+  
+  // For pages where article links don't exist yet
+  document.querySelectorAll('a[href^="article"]').forEach(link => {
+    if (link.getAttribute('href').endsWith('.html')) {
+      link.addEventListener('click', function(e) {
+        const articleNum = link.getAttribute('href').replace('article', '').replace('.html', '');
+        if (articleNum > 2) {
+          e.preventDefault();
+          alert('This article is coming soon! Currently only article1.html and article2.html are fully implemented.');
+        }
+      });
+    }
+  });
 });
