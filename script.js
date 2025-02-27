@@ -1,6 +1,36 @@
 
 // Wait for DOM content to load
 document.addEventListener('DOMContentLoaded', function() {
+  // Fix any layout issues on initial load
+  function fixLayoutIssues() {
+    // Fix content overflow issues
+    const contentElements = document.querySelectorAll('.article-content img, .article-content p, .article-content .highlight-box');
+    contentElements.forEach(element => {
+      if (element.offsetWidth > element.parentElement.offsetWidth) {
+        element.style.width = '100%';
+        element.style.maxWidth = '100%';
+      }
+    });
+    
+    // Fix category tags alignment
+    const tags = document.querySelectorAll('.tag');
+    tags.forEach(tag => {
+      tag.style.display = 'inline-block';
+      tag.style.textAlign = 'center';
+    });
+    
+    // Center align header content
+    const headerContents = document.querySelectorAll('.header-content');
+    headerContents.forEach(content => {
+      content.style.margin = '0 auto';
+      content.style.maxWidth = '800px';
+    });
+  }
+  
+  // Run fix immediately and after slight delay to ensure images are loaded
+  fixLayoutIssues();
+  setTimeout(fixLayoutIssues, 500);
+  
   // Add floating elements to enhance visual appeal
   const hero = document.querySelector('.hero');
   if (hero) {
@@ -185,6 +215,29 @@ document.addEventListener('DOMContentLoaded', function() {
       articleHeader.style.minHeight = '40vh';
       articleHeader.style.padding = '4rem 1rem 2rem';
     }
+    
+    // Fix content overflow issues
+    const contentElements = document.querySelectorAll('.article-content img, .article-content p, .article-content .highlight-box');
+    contentElements.forEach(element => {
+      if (element.offsetWidth > element.parentElement.offsetWidth) {
+        element.style.width = '100%';
+        element.style.maxWidth = '100%';
+      }
+    });
+    
+    // Fix category tags alignment
+    const tags = document.querySelectorAll('.tag');
+    tags.forEach(tag => {
+      tag.style.display = 'inline-block';
+      tag.style.textAlign = 'center';
+    });
+    
+    // Center align header content
+    const headerContents = document.querySelectorAll('.header-content');
+    headerContents.forEach(content => {
+      content.style.margin = '0 auto';
+      content.style.maxWidth = '800px';
+    });
   });
   
   // Newsletter form submission

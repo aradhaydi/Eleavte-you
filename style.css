@@ -959,7 +959,7 @@ footer {
   grid-template-columns: repeat(3, 1fr);
   gap: var(--grid-gap);
   width: 100%;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .article-content {
@@ -967,6 +967,88 @@ footer {
   margin: 0 auto;
   padding: 3rem 2rem;
   line-height: 1.8;
-  overflow: visible;
+  overflow: hidden;
   position: relative;
+}
+
+/* Fix for logo and header alignment */
+.logo {
+  margin-right: 1rem;
+}
+
+/* Fix for category tags alignment and overflow */
+.tag {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  z-index: 10;
+  position: relative;
+}
+
+/* Fix article header alignment */
+.article-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.header-content {
+  max-width: 800px;
+  z-index: 5;
+  padding: 2rem;
+}
+
+/* Fix card elements with overflow */
+.card-content {
+  padding: 1.5rem;
+  overflow: hidden;
+}
+
+/* Fix images to prevent overflow */
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  margin: 2rem auto;
+  border-radius: var(--border-radius);
+}
+
+/* Better spacing for article content elements */
+.article-content p, 
+.article-content ul, 
+.article-content ol,
+.article-content blockquote,
+.article-content .highlight-box {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Fix alignment on smaller screens */
+@media (max-width: 768px) {
+  .article-header .header-content {
+    padding: 1rem;
+  }
+  
+  .related-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .article-meta {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .article-content {
+    padding: 2rem 1rem;
+  }
 }
