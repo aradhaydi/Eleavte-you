@@ -1,14 +1,13 @@
-
 // Wait for DOM content to load
 document.addEventListener('DOMContentLoaded', function() {
   // Add animation classes to elements when they come into view
   const animateOnScroll = function() {
     const elements = document.querySelectorAll('.section-title, .featured-card, .article-card, .course-card, .exercise-card');
-    
+
     elements.forEach(element => {
       const elementPosition = element.getBoundingClientRect().top;
       const windowHeight = window.innerHeight;
-      
+
       if (elementPosition < windowHeight - 100) {
         if (element.classList.contains('section-title')) {
           element.classList.add('slide-up');
@@ -20,17 +19,17 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   };
-  
+
   // Run once on load
   animateOnScroll();
-  
+
   // Run on scroll
   window.addEventListener('scroll', animateOnScroll);
-  
+
   // Mobile Menu Toggle
   const menuToggle = document.querySelector('.menu-toggle');
   const menu = document.querySelector('.menu');
-  
+
   if (menuToggle) {
     menuToggle.addEventListener('click', function() {
       menu.classList.toggle('active');
@@ -44,51 +43,62 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
-  
+
   // Featured Content Slider
   const sliderContainer = document.querySelector('.slider-container');
   const sliderDots = document.querySelectorAll('.slider-dot');
   const prevSlideBtn = document.querySelector('.prev-slide');
   const nextSlideBtn = document.querySelector('.next-slide');
   const featuredCards = document.querySelectorAll('.featured-card');
-  
+
   let currentSlide = 0;
-  
+
   if (sliderContainer && featuredCards.length > 0) {
     // Make sure the slider has the right structure for mobile and desktop
     sliderContainer.style.display = 'flex';
-    
+
     // Function to adjust slider based on screen size
     function adjustSliderForScreenSize() {
       // Size container appropriately based on responsive design
       sliderContainer.style.width = `${featuredCards.length * 100}%`;
-      
+
+      const isMobile = window.innerWidth <= 768;
+      const cardPadding = isMobile ? '0 5px' : '0 8px';
+
       // Apply proper width to each card
       featuredCards.forEach(card => {
         card.style.width = `${100 / featuredCards.length}%`;
-        card.style.padding = '0 8px';
+        card.style.padding = cardPadding;
         // Make sure cards are visible
         card.style.display = 'block';
         card.style.opacity = '1';
+
+        // Make sure images load correctly
+        const cardImage = card.querySelector('.card-image img');
+        if (cardImage) {
+          cardImage.style.objectFit = 'cover';
+          cardImage.style.width = '100%';
+          cardImage.style.height = '100%';
+        }
       });
-      
+
       // Make sure slider is visible
       sliderContainer.style.opacity = '1';
       sliderContainer.style.overflow = 'visible';
     }
-    
+
     // Call once on load
     adjustSliderForScreenSize();
-    
+
     // Listen for window resize
     window.addEventListener('resize', adjustSliderForScreenSize);
-    
+
     // Update slider position
     function updateSliderPosition() {
       const slidePercentage = 100 / featuredCards.length;
       sliderContainer.style.transform = `translateX(-${currentSlide * slidePercentage}%)`;
       sliderContainer.style.transition = 'transform 0.5s ease';
-      
+
       // Update active dot
       sliderDots.forEach((dot, index) => {
         if (index === currentSlide) {
@@ -98,23 +108,23 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
     }
-    
+
     // Next slide
     function nextSlide() {
       currentSlide = (currentSlide + 1) % featuredCards.length;
       updateSliderPosition();
     }
-    
+
     // Previous slide
     function prevSlide() {
       currentSlide = (currentSlide - 1 + featuredCards.length) % featuredCards.length;
       updateSliderPosition();
     }
-    
+
     // Event listeners for slider controls
     if (nextSlideBtn) nextSlideBtn.addEventListener('click', nextSlide);
     if (prevSlideBtn) prevSlideBtn.addEventListener('click', prevSlide);
-    
+
     // Event listeners for slider dots
     sliderDots.forEach(dot => {
       dot.addEventListener('click', function() {
@@ -122,17 +132,17 @@ document.addEventListener('DOMContentLoaded', function() {
         updateSliderPosition();
       });
     });
-    
+
     // Auto slide
     setInterval(nextSlide, 5000);
-    
+
     // Initial position
     updateSliderPosition();
   }
-  
+
   // Back to Top button
   const backToTopBtn = document.querySelector('.back-to-top');
-  
+
   if (backToTopBtn) {
     window.addEventListener('scroll', function() {
       if (window.pageYOffset > 300) {
@@ -141,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
         backToTopBtn.classList.remove('visible');
       }
     });
-    
+
     backToTopBtn.addEventListener('click', function() {
       window.scrollTo({
         top: 0,
@@ -149,16 +159,16 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
   }
-  
+
   // Smooth scrolling for navigation links
   const navLinks = document.querySelectorAll('header nav a, .hero a');
-  
+
   navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
       // Only process links that start with #
       if (this.getAttribute('href').startsWith('#')) {
         e.preventDefault();
-        
+
         // Close mobile menu if open
         if (menu.classList.contains('active')) {
           menu.classList.remove('active');
@@ -166,16 +176,16 @@ document.addEventListener('DOMContentLoaded', function() {
           icon.classList.remove('fa-times');
           icon.classList.add('fa-bars');
         }
-        
+
         const targetId = this.getAttribute('href');
         const targetSection = document.querySelector(targetId);
-        
+
         if (targetSection) {
           window.scrollTo({
             top: targetSection.offsetTop - 90,
             behavior: 'smooth'
           });
-          
+
           // Update active link
           navLinks.forEach(navLink => navLink.classList.remove('active'));
           this.classList.add('active');
@@ -183,26 +193,26 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
-  
+
   // Highlight active section on scroll
   window.addEventListener('scroll', function() {
     const scrollPosition = window.scrollY;
-    
+
     // Get all sections
     const sections = document.querySelectorAll('section');
-    
+
     sections.forEach(section => {
       // Calculate section position
       const sectionTop = section.offsetTop - 100;
       const sectionHeight = section.offsetHeight;
-      
+
       if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
         // Get section id
         const sectionId = section.getAttribute('id');
-        
+
         // Remove active class from all links
         navLinks.forEach(link => link.classList.remove('active'));
-        
+
         // Add active class to corresponding link
         const activeLink = document.querySelector(`header nav a[href="#${sectionId}"]`);
         if (activeLink) {
@@ -210,7 +220,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }
     });
-    
+
     // Change header background on scroll
     const header = document.querySelector('header');
     if (scrollPosition > 50) {
@@ -221,12 +231,12 @@ document.addEventListener('DOMContentLoaded', function() {
       header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
     }
   });
-  
+
   // Simple testimonial slider
   let currentTestimonial = 0;
   const testimonials = document.querySelectorAll('.testimonial');
   const testimonialSlider = document.querySelector('.testimonials-slider');
-  
+
   if (testimonials.length > 0 && testimonialSlider) {
     // Auto-scroll testimonials
     setInterval(() => {
@@ -237,15 +247,15 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }, 5000);
   }
-  
+
   // Newsletter form submission
   const newsletterForm = document.querySelector('.newsletter-form');
-  
+
   if (newsletterForm) {
     newsletterForm.addEventListener('submit', function(e) {
       e.preventDefault();
       const emailInput = this.querySelector('input[type="email"]');
-      
+
       if (emailInput && emailInput.value) {
         // In a real application, you would send this to your backend
         alert(`Thank you for subscribing with ${emailInput.value}!`);
@@ -253,16 +263,16 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
-  
+
   // Animation for exercise cards
   const exerciseCards = document.querySelectorAll('.exercise-card');
-  
+
   if (exerciseCards.length > 0) {
     const observerOptions = {
       threshold: 0.2,
       rootMargin: '0px 0px -50px 0px'
     };
-    
+
     const exerciseObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -272,7 +282,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
     }, observerOptions);
-    
+
     exerciseCards.forEach((card, index) => {
       card.style.opacity = '0';
       card.style.transform = 'translateY(20px)';
@@ -280,10 +290,10 @@ document.addEventListener('DOMContentLoaded', function() {
       exerciseObserver.observe(card);
     });
   }
-  
+
   // Download buttons for exercises
   const downloadButtons = document.querySelectorAll('.download-btn');
-  
+
   if (downloadButtons.length > 0) {
     // Create sample PDF content (this is just a demo)
     const generateDummyPDF = (title, exerciseType) => {
@@ -296,27 +306,27 @@ document.addEventListener('DOMContentLoaded', function() {
       a.click();
       document.body.removeChild(a);
     };
-    
+
     downloadButtons.forEach(button => {
       button.addEventListener('click', function(e) {
         e.preventDefault();
         const exerciseCard = this.closest('.exercise-card');
         const exerciseTitle = exerciseCard.querySelector('h3').textContent;
         const exerciseType = this.getAttribute('data-exercise') || 'resource';
-        
+
         // Show downloading animation
         const originalText = this.textContent;
         this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading...';
         this.disabled = true;
-        
+
         // Simulate download delay
         setTimeout(() => {
           generateDummyPDF(exerciseTitle, exerciseType);
-          
+
           // Reset button
           setTimeout(() => {
             this.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
-            
+
             // Return to original state after 2 seconds
             setTimeout(() => {
               this.innerHTML = originalText;
@@ -334,25 +344,25 @@ function initDarkMode() {
   if (document.querySelector('.dark-mode-toggle')) {
     return;
   }
-  
+
   const darkModeToggle = document.createElement('button');
   darkModeToggle.className = 'dark-mode-toggle';
   darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
   darkModeToggle.title = 'Toggle Dark Mode';
   document.body.appendChild(darkModeToggle);
-  
+
   // Check for saved theme preference or respect OS preference
   const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
   const savedTheme = localStorage.getItem('theme');
-  
+
   if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme.matches)) {
     document.body.classList.add('dark-theme');
     darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
   }
-  
+
   darkModeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-theme');
-    
+
     if (document.body.classList.contains('dark-theme')) {
       localStorage.setItem('theme', 'dark');
       darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
@@ -366,17 +376,17 @@ function initDarkMode() {
 // Calculate and display reading time for articles
 function calculateReadingTime() {
   const articleContent = document.querySelector('.article-content');
-  
+
   if (articleContent) {
     const text = articleContent.textContent;
     const wordCount = text.split(/\s+/).length;
     const readingTime = Math.ceil(wordCount / 200); // Assuming 200 words per minute reading speed
-    
+
     // Create reading time element
     const readingTimeElement = document.createElement('span');
     readingTimeElement.classList.add('reading-time');
     readingTimeElement.innerHTML = `<i class="far fa-clock"></i> ${readingTime} min read`;
-    
+
     // Add it to article meta if exists, or create new meta section
     const articleMeta = document.querySelector('.article-meta');
     if (articleMeta) {
@@ -385,7 +395,7 @@ function calculateReadingTime() {
       const newMeta = document.createElement('div');
       newMeta.className = 'article-meta';
       newMeta.appendChild(readingTimeElement);
-      
+
       const headerContent = document.querySelector('.header-content');
       if (headerContent) {
         headerContent.appendChild(newMeta);
@@ -393,10 +403,10 @@ function calculateReadingTime() {
     }
   }
 }
-  
+
   // Course enrollment buttons (for demo purposes)
   const courseButtons = document.querySelectorAll('.course-btn');
-  
+
   if (courseButtons.length > 0) {
     courseButtons.forEach(button => {
       button.addEventListener('click', function(e) {
@@ -404,39 +414,39 @@ function calculateReadingTime() {
         const courseCard = this.closest('.course-card');
         const courseTitle = courseCard.querySelector('h3').textContent;
         const courseType = this.getAttribute('data-course') || 'general-course';
-        
+
         // Show enrollment animation
         const originalText = this.textContent;
         this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
         this.disabled = true;
-        
+
         // Simulate enrollment process
         setTimeout(() => {
           // Success message
           this.innerHTML = '<i class="fas fa-check"></i> Enrolled!';
-          
+
           // Create a success notification
           const notification = document.createElement('div');
           notification.className = 'enrollment-notification';
           notification.innerHTML = `<i class="fas fa-check-circle"></i> You've successfully enrolled in "${courseTitle}". Check your email for course access!`;
-          
+
           document.body.appendChild(notification);
-          
+
           // Show notification
           setTimeout(() => {
             notification.classList.add('show');
-            
+
             // Hide after 5 seconds
             setTimeout(() => {
               notification.classList.remove('show');
-              
+
               // Remove from DOM after animation
               setTimeout(() => {
                 document.body.removeChild(notification);
               }, 500);
             }, 5000);
           }, 100);
-          
+
           // Return button to original state
           setTimeout(() => {
             this.innerHTML = originalText;
@@ -446,7 +456,7 @@ function calculateReadingTime() {
       });
     });
   }
-  
+
   // All article links are now implemented
   // Enable smooth transitions between articles
   document.querySelectorAll('a[href^="article"]').forEach(link => {
