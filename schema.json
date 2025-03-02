@@ -1,10 +1,9 @@
-
 {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Evolve You",
-  "url": "https://evolveyou.repl.co",
-  "logo": "https://evolveyou.repl.co/favicon.png",
+  "url": "https://evolve-core.vercel.app",
+  "logo": "https://evolve-core.vercel.app/favicon.png",
   "description": "Evidence-based personal growth and self-development platform offering courses, articles, and free resources.",
   "sameAs": [
     "https://facebook.com/evolveyou",
