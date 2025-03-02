@@ -393,12 +393,6 @@ function calculateReadingTime() {
     }
   }
 }
-
-// Initialize features
-document.addEventListener('DOMContentLoaded', function() {
-  initDarkMode();
-  calculateReadingTime();
-});
   
   // Course enrollment buttons (for demo purposes)
   const courseButtons = document.querySelectorAll('.course-btn');

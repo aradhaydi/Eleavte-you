@@ -226,6 +226,18 @@ header .container {
   align-items: center;
 }
 
+.logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-image {
+  height: 35px;
+  width: auto;
+  margin-right: 10px;
+}
+
 .logo h1 {
   font-size: 1.8rem;
   color: var(--primary-color);
@@ -486,6 +498,25 @@ nav {
   color: var(--primary-color);
 }
 
+.course-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.course-status.available {
+  background-color: rgba(72, 187, 120, 0.1);
+  color: var(--success-color);
+}
+
+.course-status.coming-soon {
+  background-color: rgba(237, 137, 54, 0.1);
+  color: var(--warning-color);
+}
+
 /* Exercises Section */
 .exercises {
   background-color: var(--light-color);
@@ -504,10 +535,34 @@ nav {
   text-align: center;
   box-shadow: var(--box-shadow);
   transition: var(--transition);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .exercise-card:hover {
   transform: translateY(-5px);
+}
+
+.exercise-card p {
+  flex-grow: 1;
+  margin-bottom: 1.5rem;
+}
+
+.exercise-card .btn {
+  align-self: center;
+}
+
+@media (max-width: 576px) {
+  .exercises-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .exercise-card {
+    padding: 1.5rem;
+  }
 }
 
 .exercise-icon {
@@ -1157,6 +1212,32 @@ footer {
   padding: 0 8px;
   box-sizing: border-box;
   transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .featured-card .card-image {
+    height: 180px;
+  }
+  
+  .featured-card .card-content h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .featured-card .card-content p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .featured-card .card-content {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .featured-card .card-image {
+    height: 150px;
+  }
 }
 
 .slider-controls {
