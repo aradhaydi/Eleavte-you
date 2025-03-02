@@ -1,6 +1,32 @@
 
 // Wait for DOM content to load
 document.addEventListener('DOMContentLoaded', function() {
+  // Add animation classes to elements when they come into view
+  const animateOnScroll = function() {
+    const elements = document.querySelectorAll('.section-title, .featured-card, .article-card, .course-card, .exercise-card');
+    
+    elements.forEach(element => {
+      const elementPosition = element.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+      
+      if (elementPosition < windowHeight - 100) {
+        if (element.classList.contains('section-title')) {
+          element.classList.add('slide-up');
+        } else if (element.classList.contains('featured-card') || element.classList.contains('article-card')) {
+          element.classList.add('fade-in');
+        } else {
+          element.classList.add('slide-in-right');
+        }
+      }
+    });
+  };
+  
+  // Run once on load
+  animateOnScroll();
+  
+  // Run on scroll
+  window.addEventListener('scroll', animateOnScroll);
+  
   // Mobile Menu Toggle
   const menuToggle = document.querySelector('.menu-toggle');
   const menu = document.querySelector('.menu');
@@ -16,6 +42,86 @@ document.addEventListener('DOMContentLoaded', function() {
         icon.classList.remove('fa-times');
         icon.classList.add('fa-bars');
       }
+    });
+  }
+  
+  // Featured Content Slider
+  const sliderContainer = document.querySelector('.slider-container');
+  const sliderDots = document.querySelectorAll('.slider-dot');
+  const prevSlideBtn = document.querySelector('.prev-slide');
+  const nextSlideBtn = document.querySelector('.next-slide');
+  const featuredCards = document.querySelectorAll('.featured-card');
+  
+  let currentSlide = 0;
+  const cardWidth = featuredCards.length > 0 ? featuredCards[0].offsetWidth : 0;
+  const cardMargin = 16; // Assuming margin is 16px
+  const slideWidth = cardWidth + cardMargin;
+  
+  if (sliderContainer && featuredCards.length > 0) {
+    // Set initial position
+    sliderContainer.style.display = 'grid';
+    sliderContainer.style.gridTemplateColumns = `repeat(${featuredCards.length}, 1fr)`;
+    sliderContainer.style.gap = '16px';
+    
+    // Update slider position
+    function updateSliderPosition() {
+      sliderContainer.style.transform = `translateX(-${currentSlide * (100 / featuredCards.length)}%)`;
+      
+      // Update active dot
+      sliderDots.forEach((dot, index) => {
+        if (index === currentSlide) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+    
+    // Next slide
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % featuredCards.length;
+      updateSliderPosition();
+    }
+    
+    // Previous slide
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + featuredCards.length) % featuredCards.length;
+      updateSliderPosition();
+    }
+    
+    // Event listeners for slider controls
+    if (nextSlideBtn) nextSlideBtn.addEventListener('click', nextSlide);
+    if (prevSlideBtn) prevSlideBtn.addEventListener('click', prevSlide);
+    
+    // Event listeners for slider dots
+    sliderDots.forEach(dot => {
+      dot.addEventListener('click', function() {
+        currentSlide = parseInt(this.getAttribute('data-index'));
+        updateSliderPosition();
+      });
+    });
+    
+    // Auto slide
+    setInterval(nextSlide, 5000);
+  }
+  
+  // Back to Top button
+  const backToTopBtn = document.querySelector('.back-to-top');
+  
+  if (backToTopBtn) {
+    window.addEventListener('scroll', function() {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+    
+    backToTopBtn.addEventListener('click', function() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     });
   }
   
@@ -162,6 +268,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Dark mode toggle
 function initDarkMode() {
+  // Check if toggle already exists to avoid duplicates
+  if (document.querySelector('.dark-mode-toggle')) {
+    return;
+  }
+  
   const darkModeToggle = document.createElement('button');
   darkModeToggle.className = 'dark-mode-toggle';
   darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
