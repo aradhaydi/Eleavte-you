@@ -1,4 +1,7 @@
 
 User-agent: *
 Allow: /
-Sitemap: https://evolveyou.com/sitemap.xml
+Disallow: /admin/
+Disallow: /private/
+
+Sitemap: https://yourdomain.com/sitemap.xml

@@ -159,6 +159,74 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         const exerciseTitle = this.closest('.exercise-card').querySelector('h3').textContent;
         alert(`The ${exerciseTitle} will download shortly!`);
+
+// Dark mode toggle
+function initDarkMode() {
+  const darkModeToggle = document.createElement('button');
+  darkModeToggle.className = 'dark-mode-toggle';
+  darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+  darkModeToggle.title = 'Toggle Dark Mode';
+  document.body.appendChild(darkModeToggle);
+  
+  // Check for saved theme preference or respect OS preference
+  const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+  const savedTheme = localStorage.getItem('theme');
+  
+  if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme.matches)) {
+    document.body.classList.add('dark-theme');
+    darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+  }
+  
+  darkModeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-theme');
+    
+    if (document.body.classList.contains('dark-theme')) {
+      localStorage.setItem('theme', 'dark');
+      darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    } else {
+      localStorage.setItem('theme', 'light');
+      darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    }
+  });
+}
+
+// Calculate and display reading time for articles
+function calculateReadingTime() {
+  const articleContent = document.querySelector('.article-content');
+  
+  if (articleContent) {
+    const text = articleContent.textContent;
+    const wordCount = text.split(/\s+/).length;
+    const readingTime = Math.ceil(wordCount / 200); // Assuming 200 words per minute reading speed
+    
+    // Create reading time element
+    const readingTimeElement = document.createElement('span');
+    readingTimeElement.classList.add('reading-time');
+    readingTimeElement.innerHTML = `<i class="far fa-clock"></i> ${readingTime} min read`;
+    
+    // Add it to article meta if exists, or create new meta section
+    const articleMeta = document.querySelector('.article-meta');
+    if (articleMeta) {
+      articleMeta.appendChild(readingTimeElement);
+    } else {
+      const newMeta = document.createElement('div');
+      newMeta.className = 'article-meta';
+      newMeta.appendChild(readingTimeElement);
+      
+      const headerContent = document.querySelector('.header-content');
+      if (headerContent) {
+        headerContent.appendChild(newMeta);
+      }
+    }
+  }
+}
+
+// Initialize features
+document.addEventListener('DOMContentLoaded', function() {
+  initDarkMode();
+  calculateReadingTime();
+});
+
       });
     });
   }

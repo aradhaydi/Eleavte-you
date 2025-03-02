@@ -1,0 +1,31 @@
+
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Evolve You",
+  "url": "https://evolveyou.com",
+  "logo": "https://evolveyou.com/logo.png",
+  "description": "Evidence-based personal growth and self-development platform offering courses, articles, and free resources.",
+  "sameAs": [
+    "https://facebook.com/evolveyou",
+    "https://twitter.com/evolveyou",
+    "https://instagram.com/evolveyou",
+    "https://linkedin.com/company/evolveyou",
+    "https://youtube.com/evolveyou"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "123 Wellness Way",
+    "addressLocality": "San Francisco",
+    "addressRegion": "CA",
+    "postalCode": "94103",
+    "addressCountry": "US"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+1-555-123-4567",
+    "contactType": "customer service",
+    "email": "hello@evolveyou.com",
+    "availableLanguage": "English"
+  }
+}

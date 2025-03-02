@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search | Evolve You</title>
+  <meta name="description" content="Search Evolve You for personal growth resources, articles, and courses.">
+  <meta name="robots" content="noindex, follow">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .search-container {
+      max-width: 800px;
+      margin: 120px auto 60px;
+      padding: 0 20px;
+    }
+    
+    .search-form {
+      display: flex;
+      margin-bottom: 30px;
+    }
+    
+    .search-input {
+      flex: 1;
+      padding: 15px;
+      font-size: 1.1rem;
+      border: 2px solid var(--gray-color);
+      border-radius: var(--border-radius) 0 0 var(--border-radius);
+    }
+    
+    .search-button {
+      padding: 15px 25px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 0 var(--border-radius) var(--border-radius) 0;
+      cursor: pointer;
+    }
+    
+    .search-results {
+      margin-top: 30px;
+    }
+    
+    .result-item {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--gray-color);
+    }
+    
+    .result-item h3 {
+      margin-bottom: 10px;
+    }
+    
+    .result-item p {
+      margin-bottom: 15px;
+      color: var(--text-color-light);
+    }
+    
+    .highlight {
+      background-color: rgba(108, 99, 255, 0.2);
+      padding: 0 3px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <h1>Evolve You</h1>
+      </div>
+      <nav>
+        <ul class="menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#articles">Articles</a></li>
+          <li><a href="index.html#courses">Courses</a></li>
+          <li><a href="index.html#exercises">Exercises</a></li>
+          <li><a href="index.html#about">About</a></li>
+        </ul>
+        <div class="menu-toggle">
+          <i class="fas fa-bars"></i>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="search-container">
+    <h1>Search Evolve You</h1>
+    <form class="search-form" id="search-form">
+      <input type="text" class="search-input" id="search-input" placeholder="Enter keywords..." required>
+      <button type="submit" class="search-button">
+        <i class="fas fa-search"></i>
+      </button>
+    </form>
+    
+    <div class="search-results" id="search-results">
+      <!-- Results will be dynamically inserted here by JavaScript -->
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h2>Evolve You</h2>
+          <p>Empowering personal growth through evidence-based content and community support.</p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="links-column">
+            <h3>Content</h3>
+            <ul>
+              <li><a href="index.html#articles">Articles</a></li>
+              <li><a href="index.html#courses">Courses</a></li>
+              <li><a href="index.html#exercises">Free Resources</a></li>
+              <li><a href="#">Podcast</a></li>
+            </ul>
+          </div>
+          <div class="links-column">
+            <h3>Company</h3>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Team</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="links-column">
+            <h3>Legal</h3>
+            <ul>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Cookie Policy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2023 Evolve You. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Sample search data - in a real implementation, this would be
+      // generated from your actual content or retrieved from a backend
+      const searchData = [
+        {
+          title: "The 5 AM Miracle: Engineering Your Morning Routine",
+          url: "article1.html",
+          content: "How the first hour of your day determines your success. Learn practical tips for creating a morning routine that energizes and inspires."
+        },
+        {
+          title: "Mastering Emotional Intelligence in Relationships",
+          url: "article2.html",
+          content: "Understanding and managing your emotions is key to healthy relationships. Explore practical EQ exercises you can start today."
+        },
+        {
+          title: "The Science of Goal Setting: Why Most People Fail",
+          url: "article3.html",
+          content: "Learn the psychological principles behind effective goal setting and how to apply them to achieve what matters most to you."
+        },
+        {
+          title: "Abundance Mindset: Rewriting Your Money Story",
+          url: "article4.html",
+          content: "Identify and transform limiting beliefs about money. Develop an abundance mindset that attracts wealth and opportunity."
+        },
+        {
+          title: "The Power of Daily Meditation",
+          url: "article5.html",
+          content: "Discover how just 10 minutes a day can transform your mental clarity and emotional balance."
+        },
+        {
+          title: "Deep Work: Achieving Flow State",
+          url: "article6.html",
+          content: "Learn techniques to eliminate distractions and maximize your productive potential."
+        },
+        {
+          title: "Building Sustainable Healthy Habits",
+          url: "article7.html",
+          content: "A practical guide to creating and maintaining habits that stick for the long term based on neuroscience and behavioral psychology."
+        }
+      ];
+
+      const searchForm = document.getElementById('search-form');
+      const searchInput = document.getElementById('search-input');
+      const searchResults = document.getElementById('search-results');
+
+      searchForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const query = searchInput.value.toLowerCase().trim();
+        
+        if (query.length < 3) {
+          searchResults.innerHTML = '<p>Please enter at least 3 characters to search.</p>';
+          return;
+        }
+        
+        const results = searchData.filter(item => 
+          item.title.toLowerCase().includes(query) || 
+          item.content.toLowerCase().includes(query)
+        );
+        
+        displayResults(results, query);
+      });
+
+      function displayResults(results, query) {
+        searchResults.innerHTML = '';
+        
+        if (results.length === 0) {
+          searchResults.innerHTML = '<p>No results found. Try different keywords.</p>';
+          return;
+        }
+        
+        const resultsHeading = document.createElement('h2');
+        resultsHeading.textContent = `Found ${results.length} result${results.length > 1 ? 's' : ''}`;
+        searchResults.appendChild(resultsHeading);
+        
+        results.forEach(result => {
+          const resultItem = document.createElement('div');
+          resultItem.className = 'result-item';
+          
+          const title = document.createElement('h3');
+          const titleLink = document.createElement('a');
+          titleLink.href = result.url;
+          titleLink.textContent = result.title;
+          title.appendChild(titleLink);
+          
+          const content = document.createElement('p');
+          content.innerHTML = highlightText(result.content, query);
+          
+          const readMore = document.createElement('a');
+          readMore.href = result.url;
+          readMore.textContent = 'Read More';
+          readMore.className = 'read-more';
+          
+          resultItem.appendChild(title);
+          resultItem.appendChild(content);
+          resultItem.appendChild(readMore);
+          
+          searchResults.appendChild(resultItem);
+        });
+      }
+      
+      function highlightText(text, query) {
+        const regex = new RegExp(`(${query})`, 'gi');
+        return text.replace(regex, '<span class="highlight">$1</span>');
+      }
+      
+      // Check if there's a search parameter in the URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const searchQuery = urlParams.get('q');
+      
+      if (searchQuery) {
+        searchInput.value = searchQuery;
+        searchForm.dispatchEvent(new Event('submit'));
+      }
+    });
+  </script>
+</body>
+</html>
