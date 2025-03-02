@@ -1,7 +1,6 @@
-
 User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /private/
 
-Sitemap: https://evolveyou.repl.co/sitemap.xml
+Sitemap: https://evolve-core.vercel.app/sitemap.xml
