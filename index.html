@@ -28,10 +28,14 @@
   <!-- Robots -->
   <meta name="robots" content="index, follow">
   
-  <!-- Favicon -->
+  <!-- Favicon and app icons -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="shortcut icon" href="favicon.png">
+  <meta name="msapplication-TileImage" content="favicon.png">
+  <meta name="msapplication-TileColor" content="#5e48e8">
+  <meta name="theme-color" content="#5e48e8">
   
   <link href="style.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -213,12 +217,12 @@
 
   <section id="courses" class="courses">
     <div class="container">
-      <h2 class="section-title">Premium Courses</h2>
+      <h2 class="section-title">Free Courses</h2>
       <div class="courses-grid">
         <div class="course-card">
           <div class="card-image">
             <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Productivity Masterclass">
-            <span class="price">$149</span>
+            <span class="price">Free</span>
           </div>
           <div class="card-content">
             <h3>Productivity Masterclass: Zero to Hero</h3>
@@ -227,13 +231,13 @@
               <span><i class="fas fa-user-graduate"></i> 4,728 Students</span>
             </div>
             <p>Master proven productivity systems to reclaim your time, energy and focus. Includes 20+ hours of video, worksheets, and community support.</p>
-            <a href="#" class="btn course-btn">Enroll Now</a>
+            <a href="#" class="btn course-btn" data-course="productivity-masterclass">Enroll Now</a>
           </div>
         </div>
         <div class="course-card">
           <div class="card-image">
             <img src="https://images.unsplash.com/photo-1545389336-cf090694435e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Mindfulness Meditation">
-            <span class="price">$99</span>
+            <span class="price">Free</span>
           </div>
           <div class="card-content">
             <h3>Mindfulness Meditation: A 30-Day Journey</h3>
@@ -242,13 +246,13 @@
               <span><i class="fas fa-user-graduate"></i> 12,354 Students</span>
             </div>
             <p>A systematic approach to building a meditation practice that sticks. Includes guided meditations, techniques for different situations, and live Q&A sessions.</p>
-            <a href="#" class="btn course-btn">Enroll Now</a>
+            <a href="#" class="btn course-btn" data-course="mindfulness-meditation">Enroll Now</a>
           </div>
         </div>
         <div class="course-card">
           <div class="card-image">
             <img src="https://images.unsplash.com/photo-1589121548283-b4ab4a954a29?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Effective Communication">
-            <span class="price">$199</span>
+            <span class="price">Free</span>
           </div>
           <div class="card-content">
             <h3>The Art of Effective Communication</h3>
@@ -257,7 +261,7 @@
               <span><i class="fas fa-user-graduate"></i> 3,189 Students</span>
             </div>
             <p>Transform your ability to connect with others through advanced communication techniques, storytelling methods, and conflict resolution strategies.</p>
-            <a href="#" class="btn course-btn">Enroll Now</a>
+            <a href="#" class="btn course-btn" data-course="effective-communication">Enroll Now</a>
           </div>
         </div>
       </div>
@@ -274,7 +278,7 @@
           </div>
           <h3>Values Discovery Worksheet</h3>
           <p>Identify your core values and learn how to align your decisions and goals with what matters most to you.</p>
-          <a href="#" class="btn download-btn">Download PDF</a>
+          <a href="#" class="btn download-btn" data-exercise="values-discovery">Download PDF</a>
         </div>
         <div class="exercise-card">
           <div class="exercise-icon">
@@ -282,7 +286,7 @@
           </div>
           <h3>Weekly Planning Template</h3>
           <p>A step-by-step template for planning your week to maximize productivity while maintaining work-life balance.</p>
-          <a href="#" class="btn download-btn">Download PDF</a>
+          <a href="#" class="btn download-btn" data-exercise="weekly-planning">Download PDF</a>
         </div>
         <div class="exercise-card">
           <div class="exercise-icon">
@@ -290,7 +294,7 @@
           </div>
           <h3>Gratitude Journal Prompts</h3>
           <p>30 thought-provoking prompts to deepen your gratitude practice and boost your happiness levels.</p>
-          <a href="#" class="btn download-btn">Download PDF</a>
+          <a href="#" class="btn download-btn" data-exercise="gratitude-journal">Download PDF</a>
         </div>
         <div class="exercise-card">
           <div class="exercise-icon">
@@ -298,7 +302,7 @@
           </div>
           <h3>Difficult Conversations Script</h3>
           <p>A framework for navigating challenging conversations with empathy, clarity, and confidence.</p>
-          <a href="#" class="btn download-btn">Download PDF</a>
+          <a href="#" class="btn download-btn" data-exercise="conversations-script">Download PDF</a>
         </div>
         <div class="exercise-card">
           <div class="exercise-icon">
@@ -306,7 +310,7 @@
           </div>
           <h3>Sleep Optimization Checklist</h3>
           <p>Evidence-based strategies to improve your sleep quality and wake up feeling refreshed and energized.</p>
-          <a href="#" class="btn download-btn">Download PDF</a>
+          <a href="#" class="btn download-btn" data-exercise="sleep-optimization">Download PDF</a>
         </div>
         <div class="exercise-card">
           <div class="exercise-icon">
@@ -314,7 +318,7 @@
           </div>
           <h3>Personal Budget Calculator</h3>
           <p>A simple but powerful tool to track your expenses, save more, and achieve your financial goals.</p>
-          <a href="#" class="btn download-btn">Download PDF</a>
+          <a href="#" class="btn download-btn" data-exercise="budget-calculator">Download PDF</a>
         </div>
       </div>
     </div>

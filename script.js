@@ -60,14 +60,21 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Function to adjust slider based on screen size
     function adjustSliderForScreenSize() {
-      const isMobile = window.innerWidth < 768;
-      
       // Size container appropriately based on responsive design
       sliderContainer.style.width = `${featuredCards.length * 100}%`;
+      
+      // Apply proper width to each card
       featuredCards.forEach(card => {
         card.style.width = `${100 / featuredCards.length}%`;
         card.style.padding = '0 8px';
+        // Make sure cards are visible
+        card.style.display = 'block';
+        card.style.opacity = '1';
       });
+      
+      // Make sure slider is visible
+      sliderContainer.style.opacity = '1';
+      sliderContainer.style.overflow = 'visible';
     }
     
     // Call once on load
@@ -80,6 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateSliderPosition() {
       const slidePercentage = 100 / featuredCards.length;
       sliderContainer.style.transform = `translateX(-${currentSlide * slidePercentage}%)`;
+      sliderContainer.style.transition = 'transform 0.5s ease';
       
       // Update active dot
       sliderDots.forEach((dot, index) => {
@@ -278,12 +286,12 @@ document.addEventListener('DOMContentLoaded', function() {
   
   if (downloadButtons.length > 0) {
     // Create sample PDF content (this is just a demo)
-    const generateDummyPDF = (title) => {
+    const generateDummyPDF = (title, exerciseType) => {
       // In a real application, you would serve actual PDF files
       // This is just to demonstrate functionality
       const a = document.createElement('a');
       a.href = "data:application/pdf;base64,JVBERi0xLjcKCjEgMCBvYmogICUgZW50cnkgcG9pbnQKPDwKICAvVHlwZSAvQ2F0YWxvZwogIC9QYWdlcyAyIDAgUgo+PgplbmRvYmoKCjIgMCBvYmoKPDwKICAvVHlwZSAvUGFnZXMKICAvTWVkaWFCb3ggWyAwIDAgMjAwIDIwMCBdCiAgL0NvdW50IDEKICAvS2lkcyBbIDMgMCBSIF0KPj4KZW5kb2JqCgozIDAgb2JqCjw8CiAgL1R5cGUgL1BhZ2UKICAvUGFyZW50IDIgMCBSCiAgL1Jlc291cmNlcyA8PAogICAgL0ZvbnQgPDwKICAgICAgL0YxIDQgMCBSIAogICAgPj4KICA+PgogIC9Db250ZW50cyA1IDAgUgo+PgplbmRvYmoKCjQgMCBvYmoKPDwKICAvVHlwZSAvRm9udAogIC9TdWJ0eXBlIC9UeXBlMQogIC9CYXNlRm9udCAvVGltZXMtUm9tYW4KPj4KZW5kb2JqCgo1IDAgb2JqICAlIHBhZ2UgY29udGVudAo8PAogIC9MZW5ndGggNDQKPj4Kc3RyZWFtCkJUCjcwIDUwIFRECi9GMSAxMiBUZgooSGVsbG8sIHdvcmxkISkgVGoKRVQKZW5kc3RyZWFtCmVuZG9iagoKeHJlZgowIDYKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDEwIDAwMDAwIG4gCjAwMDAwMDAwNzkgMDAwMDAgbiAKMDAwMDAwMDE3MyAwMDAwMCBuIAowMDAwMDAwMzAxIDAwMDAwIG4gCjAwMDAwMDAzODAgMDAwMDAgbiAKdHJhaWxlcgo8PAogIC9TaXplIDYKICAvUm9vdCAxIDAgUgo+PgpzdGFydHhyZWYKNDkyCiUlRU9G";
-      a.download = `${title.replace(/\s+/g, '_')}.pdf`;
+      a.download = `Evolve_You_${title.replace(/\s+/g, '_')}_${exerciseType}.pdf`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -294,6 +302,7 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         const exerciseCard = this.closest('.exercise-card');
         const exerciseTitle = exerciseCard.querySelector('h3').textContent;
+        const exerciseType = this.getAttribute('data-exercise') || 'resource';
         
         // Show downloading animation
         const originalText = this.textContent;
@@ -302,7 +311,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Simulate download delay
         setTimeout(() => {
-          generateDummyPDF(exerciseTitle);
+          generateDummyPDF(exerciseTitle, exerciseType);
           
           // Reset button
           setTimeout(() => {
@@ -390,10 +399,6 @@ document.addEventListener('DOMContentLoaded', function() {
   initDarkMode();
   calculateReadingTime();
 });
-
-      });
-    });
-  }
   
   // Course enrollment buttons (for demo purposes)
   const courseButtons = document.querySelectorAll('.course-btn');
@@ -402,9 +407,48 @@ document.addEventListener('DOMContentLoaded', function() {
     courseButtons.forEach(button => {
       button.addEventListener('click', function(e) {
         e.preventDefault();
-        const courseTitle = this.closest('.course-card').querySelector('h3').textContent;
-        const coursePrice = this.closest('.course-card').querySelector('.price').textContent;
-        alert(`You're about to enroll in "${courseTitle}" for ${coursePrice}. In a real application, this would take you to a checkout page.`);
+        const courseCard = this.closest('.course-card');
+        const courseTitle = courseCard.querySelector('h3').textContent;
+        const courseType = this.getAttribute('data-course') || 'general-course';
+        
+        // Show enrollment animation
+        const originalText = this.textContent;
+        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+        this.disabled = true;
+        
+        // Simulate enrollment process
+        setTimeout(() => {
+          // Success message
+          this.innerHTML = '<i class="fas fa-check"></i> Enrolled!';
+          
+          // Create a success notification
+          const notification = document.createElement('div');
+          notification.className = 'enrollment-notification';
+          notification.innerHTML = `<i class="fas fa-check-circle"></i> You've successfully enrolled in "${courseTitle}". Check your email for course access!`;
+          
+          document.body.appendChild(notification);
+          
+          // Show notification
+          setTimeout(() => {
+            notification.classList.add('show');
+            
+            // Hide after 5 seconds
+            setTimeout(() => {
+              notification.classList.remove('show');
+              
+              // Remove from DOM after animation
+              setTimeout(() => {
+                document.body.removeChild(notification);
+              }, 500);
+            }, 5000);
+          }, 100);
+          
+          // Return button to original state
+          setTimeout(() => {
+            this.innerHTML = originalText;
+            this.disabled = false;
+          }, 3000);
+        }, 1500);
       });
     });
   }

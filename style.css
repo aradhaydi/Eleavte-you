@@ -515,6 +515,36 @@ nav {
   height: 70px;
   background-color: rgba(108, 99, 255, 0.1);
 
+/* Enrollment Notification */
+.enrollment-notification {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: white;
+  color: var(--dark-color);
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  max-width: 350px;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.5s ease;
+  z-index: 1100;
+}
+
+.enrollment-notification.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.enrollment-notification i {
+  color: var(--success-color);
+  font-size: 1.5rem;
+  margin-right: 10px;
+}
+
 /* Dark Mode Theme */
 .dark-mode-toggle {
   position: fixed;
