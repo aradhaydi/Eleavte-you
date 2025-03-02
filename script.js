@@ -53,19 +53,33 @@ document.addEventListener('DOMContentLoaded', function() {
   const featuredCards = document.querySelectorAll('.featured-card');
   
   let currentSlide = 0;
-  const cardWidth = featuredCards.length > 0 ? featuredCards[0].offsetWidth : 0;
-  const cardMargin = 16; // Assuming margin is 16px
-  const slideWidth = cardWidth + cardMargin;
   
   if (sliderContainer && featuredCards.length > 0) {
-    // Set initial position
-    sliderContainer.style.display = 'grid';
-    sliderContainer.style.gridTemplateColumns = `repeat(${featuredCards.length}, 1fr)`;
-    sliderContainer.style.gap = '16px';
+    // Make sure the slider has the right structure for mobile and desktop
+    sliderContainer.style.display = 'flex';
+    
+    // Function to adjust slider based on screen size
+    function adjustSliderForScreenSize() {
+      const isMobile = window.innerWidth < 768;
+      
+      // Size container appropriately based on responsive design
+      sliderContainer.style.width = `${featuredCards.length * 100}%`;
+      featuredCards.forEach(card => {
+        card.style.width = `${100 / featuredCards.length}%`;
+        card.style.padding = '0 8px';
+      });
+    }
+    
+    // Call once on load
+    adjustSliderForScreenSize();
+    
+    // Listen for window resize
+    window.addEventListener('resize', adjustSliderForScreenSize);
     
     // Update slider position
     function updateSliderPosition() {
-      sliderContainer.style.transform = `translateX(-${currentSlide * (100 / featuredCards.length)}%)`;
+      const slidePercentage = 100 / featuredCards.length;
+      sliderContainer.style.transform = `translateX(-${currentSlide * slidePercentage}%)`;
       
       // Update active dot
       sliderDots.forEach((dot, index) => {
@@ -103,6 +117,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Auto slide
     setInterval(nextSlide, 5000);
+    
+    // Initial position
+    updateSliderPosition();
   }
   
   // Back to Top button
@@ -256,15 +273,51 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Download buttons (for demo purposes)
+  // Download buttons for exercises
   const downloadButtons = document.querySelectorAll('.download-btn');
   
   if (downloadButtons.length > 0) {
+    // Create sample PDF content (this is just a demo)
+    const generateDummyPDF = (title) => {
+      // In a real application, you would serve actual PDF files
+      // This is just to demonstrate functionality
+      const a = document.createElement('a');
+      a.href = "data:application/pdf;base64,JVBERi0xLjcKCjEgMCBvYmogICUgZW50cnkgcG9pbnQKPDwKICAvVHlwZSAvQ2F0YWxvZwogIC9QYWdlcyAyIDAgUgo+PgplbmRvYmoKCjIgMCBvYmoKPDwKICAvVHlwZSAvUGFnZXMKICAvTWVkaWFCb3ggWyAwIDAgMjAwIDIwMCBdCiAgL0NvdW50IDEKICAvS2lkcyBbIDMgMCBSIF0KPj4KZW5kb2JqCgozIDAgb2JqCjw8CiAgL1R5cGUgL1BhZ2UKICAvUGFyZW50IDIgMCBSCiAgL1Jlc291cmNlcyA8PAogICAgL0ZvbnQgPDwKICAgICAgL0YxIDQgMCBSIAogICAgPj4KICA+PgogIC9Db250ZW50cyA1IDAgUgo+PgplbmRvYmoKCjQgMCBvYmoKPDwKICAvVHlwZSAvRm9udAogIC9TdWJ0eXBlIC9UeXBlMQogIC9CYXNlRm9udCAvVGltZXMtUm9tYW4KPj4KZW5kb2JqCgo1IDAgb2JqICAlIHBhZ2UgY29udGVudAo8PAogIC9MZW5ndGggNDQKPj4Kc3RyZWFtCkJUCjcwIDUwIFRECi9GMSAxMiBUZgooSGVsbG8sIHdvcmxkISkgVGoKRVQKZW5kc3RyZWFtCmVuZG9iagoKeHJlZgowIDYKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDEwIDAwMDAwIG4gCjAwMDAwMDAwNzkgMDAwMDAgbiAKMDAwMDAwMDE3MyAwMDAwMCBuIAowMDAwMDAwMzAxIDAwMDAwIG4gCjAwMDAwMDAzODAgMDAwMDAgbiAKdHJhaWxlcgo8PAogIC9TaXplIDYKICAvUm9vdCAxIDAgUgo+PgpzdGFydHhyZWYKNDkyCiUlRU9G";
+      a.download = `${title.replace(/\s+/g, '_')}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    };
+    
     downloadButtons.forEach(button => {
       button.addEventListener('click', function(e) {
         e.preventDefault();
-        const exerciseTitle = this.closest('.exercise-card').querySelector('h3').textContent;
-        alert(`The ${exerciseTitle} will download shortly!`);
+        const exerciseCard = this.closest('.exercise-card');
+        const exerciseTitle = exerciseCard.querySelector('h3').textContent;
+        
+        // Show downloading animation
+        const originalText = this.textContent;
+        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading...';
+        this.disabled = true;
+        
+        // Simulate download delay
+        setTimeout(() => {
+          generateDummyPDF(exerciseTitle);
+          
+          // Reset button
+          setTimeout(() => {
+            this.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
+            
+            // Return to original state after 2 seconds
+            setTimeout(() => {
+              this.innerHTML = originalText;
+              this.disabled = false;
+            }, 2000);
+          }, 500);
+        }, 1000);
+      });
+    });
+  }
 
 // Dark mode toggle
 function initDarkMode() {
