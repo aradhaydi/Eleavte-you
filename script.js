@@ -320,28 +320,80 @@ document.addEventListener('DOMContentLoaded', function() {
         const exerciseTitle = exerciseCard.querySelector('h3').textContent;
         const exerciseType = this.getAttribute('data-exercise') || 'resource';
 
-        // Show downloading animation
-        const originalText = this.textContent;
-        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading...';
-        this.disabled = true;
+        // Check if this resource is available or coming soon
+        if (exerciseType === 'coming-soon' || Math.random() < 0.5) { // 50% chance for demo purposes
+          // Show coming soon notification
+          const originalText = this.textContent;
+          this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Checking...';
+          this.disabled = true;
 
-        // Simulate download delay
-        setTimeout(() => {
-          generateDummyPDF(exerciseTitle, exerciseType);
-
-          // Reset button
           setTimeout(() => {
-            this.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
-
-            // Return to original state after 2 seconds
+            showNotification(`"${exerciseTitle}" will be available soon! We'll notify you when it's ready.`, 'info');
+            
             setTimeout(() => {
-              this.innerHTML = originalText;
-              this.disabled = false;
-            }, 2000);
-          }, 500);
-        }, 1000);
+              this.innerHTML = '<i class="fas fa-clock"></i> Coming Soon';
+              
+              // Return to original state after 3 seconds
+              setTimeout(() => {
+                this.innerHTML = originalText;
+                this.disabled = false;
+              }, 3000);
+            }, 500);
+          }, 1000);
+        } else {
+          // Show downloading animation
+          const originalText = this.textContent;
+          this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading...';
+          this.disabled = true;
+
+          // Simulate download delay
+          setTimeout(() => {
+            generateDummyPDF(exerciseTitle, exerciseType);
+
+            // Reset button
+            setTimeout(() => {
+              this.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
+
+              // Return to original state after 2 seconds
+              setTimeout(() => {
+                this.innerHTML = originalText;
+                this.disabled = false;
+              }, 2000);
+            }, 500);
+          }, 1000);
+        }
       });
     });
+  }
+
+  // Function to show notifications
+  function showNotification(message, type = 'success') {
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}-notification`;
+    
+    // Set icon based on notification type
+    let icon = 'check-circle';
+    if (type === 'info') icon = 'info-circle';
+    if (type === 'warning') icon = 'exclamation-circle';
+    
+    notification.innerHTML = `<i class="fas fa-${icon}"></i> ${message}`;
+    document.body.appendChild(notification);
+
+    // Show notification
+    setTimeout(() => {
+      notification.classList.add('show');
+
+      // Hide after 5 seconds
+      setTimeout(() => {
+        notification.classList.remove('show');
+
+        // Remove from DOM after animation
+        setTimeout(() => {
+          document.body.removeChild(notification);
+        }, 500);
+      }, 5000);
+    }, 100);
   }
 
 // Dark mode toggle
@@ -420,48 +472,97 @@ function calculateReadingTime() {
         const courseCard = this.closest('.course-card');
         const courseTitle = courseCard.querySelector('h3').textContent;
         const courseType = this.getAttribute('data-course') || 'general-course';
+        const courseStatus = courseCard.querySelector('.course-status');
+        const isAvailable = courseStatus && courseStatus.classList.contains('available');
 
         // Show enrollment animation
         const originalText = this.textContent;
         this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
         this.disabled = true;
 
-        // Simulate enrollment process
-        setTimeout(() => {
-          // Success message
-          this.innerHTML = '<i class="fas fa-check"></i> Enrolled!';
-
-          // Create a success notification
-          const notification = document.createElement('div');
-          notification.className = 'enrollment-notification';
-          notification.innerHTML = `<i class="fas fa-check-circle"></i> You've successfully enrolled in "${courseTitle}". Check your email for course access!`;
-
-          document.body.appendChild(notification);
-
-          // Show notification
+        // Check if the course is available
+        if (isAvailable) {
+          // Simulate enrollment process
           setTimeout(() => {
-            notification.classList.add('show');
+            // Success message
+            this.innerHTML = '<i class="fas fa-check"></i> Enrolled!';
 
-            // Hide after 5 seconds
+            // Show notification using the common function
+            showNotification(`You've successfully enrolled in "${courseTitle}". Check your email for course access!`, 'success');
+
+            // Return button to original state
             setTimeout(() => {
-              notification.classList.remove('show');
-
-              // Remove from DOM after animation
-              setTimeout(() => {
-                document.body.removeChild(notification);
-              }, 500);
-            }, 5000);
-          }, 100);
-
-          // Return button to original state
+              this.innerHTML = originalText;
+              this.disabled = false;
+            }, 3000);
+          }, 1500);
+        } else {
+          // Coming soon notification
           setTimeout(() => {
-            this.innerHTML = originalText;
-            this.disabled = false;
-          }, 3000);
-        }, 1500);
+            this.innerHTML = '<i class="fas fa-clock"></i> Coming Soon';
+            
+            // Show coming soon notification
+            showNotification(`"${courseTitle}" is coming soon! We'll notify you when enrollment opens.`, 'info');
+            
+            // Return button to original state
+            setTimeout(() => {
+              this.innerHTML = originalText;
+              this.disabled = false;
+            }, 3000);
+          }, 1500);
+        }
       });
     });
   }
+
+  // Auto-process courses and exercises on page load
+  function setupAutoAvailability() {
+    // Process course cards
+    document.querySelectorAll('.course-card').forEach(card => {
+      const statusEl = card.querySelector('.course-status');
+      const courseTitle = card.querySelector('h3').textContent;
+      
+      // Set up tooltips for courses
+      if (statusEl) {
+        statusEl.title = statusEl.classList.contains('available') ? 
+          "This course is available now" : 
+          "This course is coming soon - we're working on it!";
+          
+        // Add hover effect to make status more noticeable
+        statusEl.addEventListener('mouseenter', function() {
+          this.style.transform = 'scale(1.1)';
+        });
+        
+        statusEl.addEventListener('mouseleave', function() {
+          this.style.transform = 'scale(1)';
+        });
+      }
+    });
+    
+    // Process exercise cards
+    document.querySelectorAll('.exercise-card').forEach(card => {
+      const title = card.querySelector('h3').textContent;
+      const downloadBtn = card.querySelector('.download-btn');
+      const isAvailable = Math.random() < 0.7; // 70% chance for demo purposes
+      
+      if (downloadBtn && !isAvailable) {
+        downloadBtn.setAttribute('data-exercise', 'coming-soon');
+        
+        // Add a small indicator that it's coming soon
+        const indicator = document.createElement('span');
+        indicator.className = 'availability-indicator';
+        indicator.innerHTML = '<i class="fas fa-clock"></i> Coming Soon';
+        indicator.style.fontSize = '0.7rem';
+        indicator.style.color = '#ed8936';
+        indicator.style.display = 'inline-block';
+        indicator.style.marginTop = '8px';
+        card.appendChild(indicator);
+      }
+    });
+  }
+  
+  // Call on page load
+  setTimeout(setupAutoAvailability, 1000);
 
   // All article links are now implemented
   // Enable smooth transitions between articles

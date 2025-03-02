@@ -581,8 +581,8 @@ nav {
   height: 70px;
   background-color: rgba(108, 99, 255, 0.1);
 
-/* Enrollment Notification */
-.enrollment-notification {
+/* Notifications */
+.notification, .enrollment-notification {
   position: fixed;
   bottom: 30px;
   right: 30px;
@@ -598,17 +598,63 @@ nav {
   opacity: 0;
   transition: all 0.5s ease;
   z-index: 1100;
+  border-left: 4px solid var(--success-color);
 }
 
-.enrollment-notification.show {
+.notification.show, .enrollment-notification.show {
   transform: translateY(0);
   opacity: 1;
 }
 
-.enrollment-notification i {
-  color: var(--success-color);
+.notification i, .enrollment-notification i {
   font-size: 1.5rem;
   margin-right: 10px;
+}
+
+.success-notification, .enrollment-notification {
+  border-left-color: var(--success-color);
+}
+
+.success-notification i, .enrollment-notification i {
+  color: var(--success-color);
+}
+
+.info-notification {
+  border-left-color: var(--primary-color);
+}
+
+.info-notification i {
+  color: var(--primary-color);
+}
+
+.warning-notification {
+  border-left-color: var(--warning-color);
+}
+
+.warning-notification i {
+  color: var(--warning-color);
+}
+
+/* Availability indicator for exercises and courses */
+.availability-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  background-color: rgba(237, 137, 54, 0.1);
+  margin-top: 10px;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.availability-indicator i {
+  color: var(--warning-color);
+}
+
+.exercise-card:hover .availability-indicator,
+.course-card:hover .course-status {
+  transform: translateY(-3px);
 }
 
 /* Dark Mode Theme */
