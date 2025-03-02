@@ -62,24 +62,21 @@ document.addEventListener('DOMContentLoaded', function() {
       // Size container appropriately based on responsive design
       sliderContainer.style.width = `${featuredCards.length * 100}%`;
 
-      const isMobile = window.innerWidth <= 768;
-      const cardPadding = isMobile ? '0 5px' : '0 8px';
+      // Get visible cards count based on screen width
+      let visibleCards = 1;
+      if (window.innerWidth >= 1200) {
+        visibleCards = 3;
+      } else if (window.innerWidth >= 768) {
+        visibleCards = 2;
+      }
 
       // Apply proper width to each card
       featuredCards.forEach(card => {
-        card.style.width = `${100 / featuredCards.length}%`;
-        card.style.padding = cardPadding;
+        card.style.width = `${100 / (featuredCards.length * visibleCards)}%`;
+        
         // Make sure cards are visible
         card.style.display = 'block';
         card.style.opacity = '1';
-
-        // Make sure images load correctly
-        const cardImage = card.querySelector('.card-image img');
-        if (cardImage) {
-          cardImage.style.objectFit = 'cover';
-          cardImage.style.width = '100%';
-          cardImage.style.height = '100%';
-        }
       });
 
       // Make sure slider is visible
@@ -95,7 +92,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Update slider position
     function updateSliderPosition() {
-      const slidePercentage = 100 / featuredCards.length;
+      // Get visible cards count based on screen width
+      let visibleCards = 1;
+      if (window.innerWidth >= 1200) {
+        visibleCards = 3;
+      } else if (window.innerWidth >= 768) {
+        visibleCards = 2;
+      }
+
+      // Calculate the correct slide percentage based on visible cards
+      const slidePercentage = 100 / (featuredCards.length * visibleCards) * visibleCards;
       sliderContainer.style.transform = `translateX(-${currentSlide * slidePercentage}%)`;
       sliderContainer.style.transition = 'transform 0.5s ease';
 
