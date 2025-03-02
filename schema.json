@@ -3,8 +3,8 @@
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Evolve You",
-  "url": "https://evolveyou.com",
-  "logo": "https://evolveyou.com/logo.png",
+  "url": "https://evolveyou.repl.co",
+  "logo": "https://evolveyou.repl.co/favicon.png",
   "description": "Evidence-based personal growth and self-development platform offering courses, articles, and free resources.",
   "sameAs": [
     "https://facebook.com/evolveyou",
