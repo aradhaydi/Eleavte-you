@@ -1,63 +1,62 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://evolveyou.repl.co/</loc>
-    <lastmod>2023-12-20</lastmod>
+    <loc>https://evolve-core.vercel.app/</loc>
+    <lastmod>2025-03-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://evolveyou.repl.co/article1.html</loc>
-    <lastmod>2023-12-20</lastmod>
+    <loc>https://evolve-core.vercel.app/article1.html</loc>
+    <lastmod>2025-03-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://evolveyou.repl.co/article2.html</loc>
-    <lastmod>2023-12-20</lastmod>
+    <loc>https://evolve-core.vercel.app/article2.html</loc>
+    <lastmod>2025-03-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://evolveyou.repl.co/article3.html</loc>
-    <lastmod>2023-12-20</lastmod>
+    <loc>https://evolve-core.vercel.app/article3.html</loc>
+    <lastmod>2025-03-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://evolveyou.repl.co/article4.html</loc>
-    <lastmod>2023-12-20</lastmod>
+    <loc>https://evolve-core.vercel.app/article4.html</loc>
+    <lastmod>2025-03-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://evolveyou.repl.co/article5.html</loc>
-    <lastmod>2023-12-20</lastmod>
+    <loc>https://evolve-core.vercel.app/article5.html</loc>
+    <lastmod>2025-03-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://evolveyou.repl.co/article6.html</loc>
-    <lastmod>2023-12-20</lastmod>
+    <loc>https://evolve-core.vercel.app/article6.html</loc>
+    <lastmod>2025-03-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://evolveyou.repl.co/article7.html</loc>
-    <lastmod>2023-12-20</lastmod>
+    <loc>https://evolve-core.vercel.app/article7.html</loc>
+    <lastmod>2025-03-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://evolveyou.repl.co/about.html</loc>
-    <lastmod>2023-12-20</lastmod>
+    <loc>https://evolve-core.vercel.app/about.html</loc>
+    <lastmod>2025-03-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://evolveyou.repl.co/contact.html</loc>
-    <lastmod>2023-12-20</lastmod>
+    <loc>https://evolve-core.vercel.app/contact.html</loc>
+    <lastmod>2025-03-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
